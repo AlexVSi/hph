@@ -1,0 +1,102 @@
+@include font('Gilroy', 'Gilroy-Regular', 400, 'normal');
+@include font('Gilroy', 'Gilroy-Bold', 700, 'normal');
+@include font('Gilroy', 'Gilroy-Medium', 500, 'normal');
+@include font('Gilroy', 'Gilroy-Light', 300, 'normal');
+
+* {
+	line-height: 140%;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+body {
+	font-family: $fontFamily;
+	font-size: $fontSize;
+}
+.wrapper {
+	min-height: 100%;
+	overflow: hidden;
+/*Чтобы прибить footer к низу*/
+	display: flex;
+	flex-direction: column;
+}
+
+.container {
+	max-width: toRem($maxWidthContainer); /*1140 + 30px (отступы безопасности)*/
+	margin: 0 auto;
+	padding: toRem(30) toRem(15); /*Отступ безопасности*/
+}
+
+main {
+	flex: 1 1 auto;
+}
+
+h1 {
+	font-weight: 700;
+	font-size: toRem(50);
+	color: $fontColorLight;
+}
+
+h2 {
+	font-weight: 700;
+	font-size: toRem(40);
+	padding: toRem(30) 0;
+}
+p, li {
+	font-size: $fontSize;
+}
+
+.formText {
+	font-weight: 500;
+	font-size: $fontSize;
+}
+
+a {
+	border: toRem(2) solid $mainColor;
+	border-radius: toRem(54);
+	padding: toRem(8) toRem(24);
+	width: max-content;
+	font-weight: 700;
+	font-size: toRem(24);
+	text-align: center;
+	color: $mainColor;
+	background-color: none;
+	transition: 0.2s;
+	background-color: #ffffff00;
+	
+	&:hover {
+		color: $fontColorLight;
+		background-color: $mainColor;
+	}
+}
+
+
+
+// PC ====================================================================
+@media(max-width: $pc) {
+
+}
+// TABLET =================================================================
+@media(max-width: $tablet) {
+
+}
+// MOBILE =================================================================
+@media(max-width: $mobile) {
+	h1 {
+		font-size: toRem(44);
+	}
+	h2 {
+		font-size: toRem(36);
+	}
+	.formText {
+		font-size: toRem(18);
+	}
+	p, li {
+		font-size: toRem(18);
+	}
+}
+// MOBILE_SMALL ===========================================================
+@media(max-width: $mobileSmall) {
+
+}

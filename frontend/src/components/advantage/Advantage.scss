@@ -1,0 +1,25 @@
+.advantage {
+	padding: toRem(24);
+	border-radius: toRem(12);
+	box-shadow: 0 0 toRem(15) #f7931eb3;
+	display: grid;
+	gap: toRem(14);
+}
+.advantage__head {
+	display: flex;
+	gap: toRem(20);
+	align-items: center;
+}
+.advantage__title {
+	font-weight: 700;
+	font-size: toRem(24);
+}
+.advantage__description {
+	font-size: toRem(18);
+}
+
+@media(max-width: $mobile) {
+	.advantage {
+		padding: toRem(12);
+	}
+}

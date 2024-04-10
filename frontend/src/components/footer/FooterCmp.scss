@@ -1,0 +1,13 @@
+footer {
+	background-color: $bckgColor;
+	p {
+		font-weight: 500;
+		font-size: toRem(20);
+		color: $fontColorLight;
+		// padding: toRem(30) 0;
+		text-align: center;
+	}
+}
+.footer__container {
+	padding: toRem(30) toRem(15);
+}

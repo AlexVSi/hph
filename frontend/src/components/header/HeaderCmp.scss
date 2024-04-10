@@ -1,0 +1,44 @@
+header {
+	background-color: $bckgColor;
+}
+.header__container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	min-height: toRem(90);
+	max-width: toRem($maxWidthContainer);
+	margin: 0 auto;
+	padding: toRem(20) toRem(15);
+}
+
+.logo {
+	@include adaptive-value('height', 70, 50, 1);
+	img {
+		width: auto;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.menu__list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: toRem(50);
+	font-size: $fontSize;
+	color: $fontColorLight;
+	font-family: $fontFamily;
+}
+.menu__burger {
+	display: none;
+}
+
+// MOBILE =================================================================
+@media(max-width: $mobile) {
+	.header__menu {
+		display: none;
+	}
+	.menu__burger {
+		display: block;
+	}
+
+}
