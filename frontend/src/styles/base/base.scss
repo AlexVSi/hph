@@ -52,24 +52,24 @@ p, li {
 	font-size: $fontSize;
 }
 
-a {
-	border: toRem(2) solid $mainColor;
-	border-radius: toRem(54);
-	padding: toRem(8) toRem(24);
-	width: max-content;
-	font-weight: 700;
-	font-size: toRem(24);
-	text-align: center;
-	color: $mainColor;
-	background-color: none;
-	transition: 0.2s;
-	background-color: #ffffff00;
+// a {
+// 	border: toRem(2) solid $mainColor;
+// 	border-radius: toRem(54);
+// 	padding: toRem(8) toRem(24);
+// 	width: max-content;
+// 	font-weight: 700;
+// 	font-size: toRem(24);
+// 	text-align: center;
+// 	color: $mainColor;
+// 	background-color: none;
+// 	transition: 0.2s;
+// 	background-color: #ffffff00;
 	
-	&:hover {
-		color: $fontColorLight;
-		background-color: $mainColor;
-	}
-}
+// 	&:hover {
+// 		color: $fontColorLight;
+// 		background-color: $mainColor;
+// 	}
+// }
 
 
 

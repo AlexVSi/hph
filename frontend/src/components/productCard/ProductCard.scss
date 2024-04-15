@@ -1,0 +1,73 @@
+.product__card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: toRem(30);
+	border: toRem(4) solid $mainColor;
+	border-radius: toRem(20);
+	padding: toRem(30) 0 toRem(30) 0;
+	// width: 347px;
+	// height: 364px;
+	position: relative;
+	overflow: hidden;
+	a {
+		position: absolute;
+		margin: auto;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 99;
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+.title {
+	font-weight: 600;
+	font-size: toRem(22);
+	line-height: 140%;
+	text-align: center;
+}
+.product__img {
+	margin-bottom: toRem(40);
+}
+
+.rectangle__img {
+	position: absolute;
+	overflow: hidden;
+	margin: auto;
+	bottom: -10.5vw;
+	right: -3.19vw;
+	transform: scale(0);
+	transition: .3s;
+	transform-origin: bottom;
+}
+
+.rectangle__img:before {
+	// content: url(./../../assets/rectangle.svg);
+	content: "";
+	display: block;
+	width: 21.81vw;
+	height: 21.81vw;
+	background: url('./../../assets/rectangle.svg');
+	// background: #fff;
+	// border-radius: 50%;
+	animation: rectangle 14s linear infinite;
+	background-size: 200%;
+}
+
+@keyframes rectangle {
+	0% {
+		 background-position: center 0 center
+	}
+
+	50% {
+		 background-position: center 100% center
+	}
+
+	100% {
+		 background-position: center 0 center
+	}
+}

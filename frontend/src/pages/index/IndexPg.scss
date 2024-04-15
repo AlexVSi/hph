@@ -135,6 +135,14 @@
 	}
 }
 
+.product-range__block {
+	padding: toRem(30) 0;
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: toRem(30);
+}
+
 .advantages__container {
 	h2 {
 		text-align: center;
@@ -147,13 +155,6 @@
 	gap: toRem(30);
 }
 
-.range__block {
-	display: flex;
-
-}
-.range__list {
-	
-}
 
 // TABLET =================================================================
 @media(max-width: $tablet) {

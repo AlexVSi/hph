@@ -8,7 +8,6 @@ import text from "../../components/text/text";
 import './IndexPg.scss'
 import AppContext from "../../context/context";
 import Advantage from "../../components/advantage/Advantage";
-import SwiperCmp from "../../components/swiperCmp/SwiperCmp";
 
 // img ======================================
 import boxyImg from './../../img/boxy.svg'
@@ -18,12 +17,22 @@ import locationImg from './../../img/location.svg'
 import telegramImg from './../../img/telegram.svg'
 import instagramImg from './../../img/instagram.svg'
 
+// advantage-img
 import basketImg from './../../img/Basket.svg'
 import starImg from './../../img/Star.svg'
 import priceImg from './../../img/Price.svg'
 import personalImg from './../../img/Personal.svg'
 import carImg from './../../img/Car.svg'
 import boxImg from './../../img/Box.svg'
+
+// product-card-img
+import bagImg from './../../img/products/bag.svg'
+import containerImg from './../../img/products/container.svg'
+import cupImg from './../../img/products/cup.svg'
+import papperPackImg from './../../img/products/papper-pack.svg'
+import petPackImg from './../../img/products/pet-pack.svg'
+import sanitazierImg from './../../img/products/sanitazier.svg'
+import SwiperRange from "../../components/swiperRange/SwiperRange";
 
 const IndexPg = () => {
 	let animateType = ''
@@ -36,15 +45,6 @@ const IndexPg = () => {
 			animateType = 'fade-right'
 		}
 	}
-
-	// const swiper = new Swiper('.swiper', {
-	// 	direction: 'vertical',
-	// 	loop: true,
-
-	// 	pagination: {
-	// 		el: '.swiper-pagination',
-	// 	},
-	// })
 
 	Aos.init()
 	const lang = useContext(AppContext)
@@ -81,6 +81,33 @@ const IndexPg = () => {
 		},
 	]
 
+	const productsList = [
+		{
+			title: 'ПЭТ-упаковка',
+			img: petPackImg
+		},
+		{
+			title: 'Бумажные пакеты',
+			img: papperPackImg
+		},
+		{
+			title: 'Хозяйственные сумки',
+			img: bagImg
+		},
+		{
+			title: 'Всё для готовки и доставки',
+			img: containerImg
+		},
+		{
+			title: 'Одноразовая посуда',
+			img: cupImg
+		},
+		{
+			title: 'Товары для уборки и гигиены',
+			img: sanitazierImg
+		},
+	]
+
 
 	return (
 		<div className="wrapper">
@@ -93,7 +120,7 @@ const IndexPg = () => {
 								<h1>Solution for home, packing and HoReCa</h1>
 								<DecorElement/>
 								<p className="sub__title">{text.titleText[0][lang.language]}</p>
-								<a>Перейти в каталог</a>
+								<Button>Перейти в каталог</Button>
 							</div>
 						</div>
 					</div>
@@ -123,7 +150,7 @@ const IndexPg = () => {
 									<li>Выгодные цены</li>
 									<li>Дружелюбный сервис</li>
 								</ul>
-								<a>Связаться с нами</a>
+								<Button>Связаться с нами</Button>
 							</div>
 							<div className="boxy">
 								<img src={boxyImg} alt="boxy" />
@@ -131,37 +158,23 @@ const IndexPg = () => {
 						</div>
 					</div>
 				</section>
-				<section className="range__section">
-					<div className="range__container container">
+				<section className="product-range__section">
+					<div className="product-range__container container">
 						<h2>Наш ассортимент</h2>
 						<DecorElement/>
-						<div className="range__block">
-							<ul className="range__list">
-								<li className="range__item">ПЭТ-упаковка</li>
-								<li className="range__item">Бумажные пакеты</li>
-								<li className="range__item">Хозяйственные сумки</li>
-								<li className="range__item">Всё для готовки и доставки</li>
-								<li className="range__item">Одноразовая посуда</li>
-								<li className="range__item">Товары для уборки и гигиены</li>
-							</ul>
-							<SwiperCmp/>
-						</div>
-						<a>Перейти в каталог</a>
+						<SwiperRange/>
 					</div>
 				</section>
 				<section className="advantages__section">
 					<div className="advantages__container container">
 						<h2>Наши преимущества</h2>
 						<div className="advantages__block">
-							{
-								advantagesList.map(item => {
-									ainmate()
-									return (
-										<Advantage title={item.title} description={item.description} img={item.img} key={item.title} animate={animateType}/>
-										// <Advantage title={item.title} description={item.description} img={item.img} key={item.title} animate={'fade-up'}/>
-									)
-								})
-							}
+							{advantagesList.map(item => {
+								ainmate()
+								return (
+									<Advantage title={item.title} description={item.description} img={item.img} key={item.title} animate={animateType}/>
+								)
+							})}
 						</div>
 					</div>
 				</section>
@@ -175,8 +188,8 @@ const IndexPg = () => {
 								<li><img src={locationImg} alt="location" className="contacts__icon"/>Strada Mihai Viteazul 25, Bălți 3100</li>
 							</ul>
 							<div className="social-media__block">
-								<a href=""><img src={telegramImg} alt="telegram" /></a>
-								<a href=""><img src={instagramImg} alt="instagram" /></a>
+								<img src={telegramImg} alt="telegram" />
+								<img src={instagramImg} alt="instagram" />
 							</div>
 						</div>
 						<div className="map__block">
