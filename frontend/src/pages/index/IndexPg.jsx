@@ -1,13 +1,16 @@
 import React, { useContext } from "react";
 import Aos from "aos";
+ 
+import './IndexPg.scss'
+
 import HeaderCmp from "../../components/header/HeaderCmp";
 import Button from "../../components/UI/button/Button";
 import FooterCmp from "../../components/footer/FooterCmp";
 import DecorElement from "../../components/UI/element/DecorElement";
 import text from "../../components/text/text";
-import './IndexPg.scss'
 import AppContext from "../../context/context";
 import Advantage from "../../components/advantage/Advantage";
+import SwiperRange from "../../components/swiperRange/SwiperRange";
 
 // img ======================================
 import boxyImg from './../../img/boxy.svg'
@@ -25,19 +28,14 @@ import personalImg from './../../img/Personal.svg'
 import carImg from './../../img/Car.svg'
 import boxImg from './../../img/Box.svg'
 
-// product-card-img
-import bagImg from './../../img/products/bag.svg'
-import containerImg from './../../img/products/container.svg'
-import cupImg from './../../img/products/cup.svg'
-import papperPackImg from './../../img/products/papper-pack.svg'
-import petPackImg from './../../img/products/pet-pack.svg'
-import sanitazierImg from './../../img/products/sanitazier.svg'
-import SwiperRange from "../../components/swiperRange/SwiperRange";
 
 const IndexPg = () => {
+	const lang = useContext(AppContext)
+	Aos.init()
+
 	let animateType = ''
 	let animateCount = 0
-	const ainmate = () => {
+	const animate = () => {
 		animateCount += 1
 		if (animateCount % 2 === 0) {
 			animateType = 'fade-left'
@@ -46,8 +44,6 @@ const IndexPg = () => {
 		}
 	}
 
-	Aos.init()
-	const lang = useContext(AppContext)
 	const advantagesList = [
 		{
 			title: 'Широкий ассортимент',
@@ -81,38 +77,11 @@ const IndexPg = () => {
 		},
 	]
 
-	const productsList = [
-		{
-			title: 'ПЭТ-упаковка',
-			img: petPackImg
-		},
-		{
-			title: 'Бумажные пакеты',
-			img: papperPackImg
-		},
-		{
-			title: 'Хозяйственные сумки',
-			img: bagImg
-		},
-		{
-			title: 'Всё для готовки и доставки',
-			img: containerImg
-		},
-		{
-			title: 'Одноразовая посуда',
-			img: cupImg
-		},
-		{
-			title: 'Товары для уборки и гигиены',
-			img: sanitazierImg
-		},
-	]
-
-
 	return (
 		<div className="wrapper">
 			<HeaderCmp/>
 			<main>
+				<div className=""></div>
 				<section className="title__section">
 					<div className="title__wrapper">
 						<div className="title__container container">
@@ -158,7 +127,7 @@ const IndexPg = () => {
 						</div>
 					</div>
 				</section>
-				<section className="product-range__section">
+				<section className="product-range__section" id="scroll-magic">
 					<div className="product-range__container container">
 						<h2>Наш ассортимент</h2>
 						<DecorElement/>
@@ -170,7 +139,7 @@ const IndexPg = () => {
 						<h2>Наши преимущества</h2>
 						<div className="advantages__block">
 							{advantagesList.map(item => {
-								ainmate()
+								animate()
 								return (
 									<Advantage title={item.title} description={item.description} img={item.img} key={item.title} animate={animateType}/>
 								)

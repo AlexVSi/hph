@@ -10,6 +10,20 @@
 	justify-content: center;
 	gap: toRem(30);
 	margin: 0;
+	position: relative;
+	a {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+	}
+	img {
+		transition: 200ms;
+		position: relative;
+		top: 0;
+		left: 0;
+	}
 }
 .slide__pagination {
 	padding: toRem(20) 0;
@@ -45,6 +59,7 @@
 	font-size: toRem(28);
 	font-weight: 500;
 	display: none;
+	text-align: center;
 }
 
 // PC ====================================================================

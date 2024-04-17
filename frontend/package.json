@@ -11,11 +11,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.0",
+    "@material/web": "^1.4.1",
     "@splidejs/react-splide": "^0.7.12",
     "@splidejs/splide": "^4.1.4",
     "aos": "^2.3.4",
+    "gsap": "^3.12.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "scrollmagic": "^2.0.8",
     "swiper": "^11.1.1"
   },
   "devDependencies": {

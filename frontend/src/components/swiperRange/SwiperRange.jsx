@@ -1,6 +1,7 @@
+import React, { useRef } from 'react';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
+
 import './SwiperRange.scss'
 
 import 'swiper/css';
@@ -45,34 +46,32 @@ const SwiperRange = () => {
 
 	return (
 		<div className='slider__wrapper'>
-		<ul className="slide__pagination"></ul>
-		<Swiper
-			modules={[Pagination, A11y, Navigation]}
-			navigation
-			spaceBetween={50}
-			slidesPerView={1}
-			pagination={{
-				el: '.slide__pagination',
-				clickable: true,
-				renderBullet: function (index, className) {
-					return '<li class="' + className + '">' + (productsList[index].title) + "</li>";
-				},
-			}}
-			onSwiper={(swiper) => console.log(swiper)}
-			onSlideChange={() => console.log('slide change')}
-		>
-			{productsList.map((item, index) => {
-				return (
-					<SwiperSlide key={index}>
-						<div className="product-title">{item.title}</div>
-						<div className="product-img__block">
-							<img src={item.img} alt="" />
-						</div>
-						<Button>Узнать больше</Button>
-					</SwiperSlide>
-				)
-			})}
-		</Swiper>
+			<ul className="slide__pagination"></ul>
+			<Swiper
+				modules={[Pagination, A11y, Navigation]}
+				navigation
+				spaceBetween={50}
+				slidesPerView={1}
+				pagination={{
+					el: '.slide__pagination',
+					clickable: true,
+					renderBullet: function (index, className) {
+						return '<li class="' + className + '">' + (productsList[index].title) + "</li>";
+					},
+				}}
+			>
+				{productsList.map((item, index) => {
+					return (
+						<SwiperSlide key={index}>
+							<div className="product-title">{item.title}</div>
+							<div className="product-img__block">
+								<img src={item.img} alt="" />
+							</div>
+							<Button>Узнать больше</Button>
+						</SwiperSlide>
+					)
+				})}
+			</Swiper>
 		</div>
 	)
 }

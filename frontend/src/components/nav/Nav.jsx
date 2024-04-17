@@ -2,9 +2,8 @@ import React, { useContext } from "react";
 import { useState } from "react";
 import AppContext from "../../context/context";
 
-const Nav = ({menuItems}) => {
+const Nav = ({menuItems, classes}) => {
 	const lang = useContext(AppContext)
-	const [language, setLanguage] = useState('ru')
 
 	function changeLanguage(value) {
 		// setLanguage(value)
@@ -13,7 +12,7 @@ const Nav = ({menuItems}) => {
 
 	return (
 		<nav className='header__menu menu'>
-			<ul className='menu__list'>
+			<ul className={classes.menu__list}>
 
 				{menuItems.map(item =>
 					<li key={item['en']} className="menu__item">{item[lang.language]}</li>
@@ -29,6 +28,7 @@ const Nav = ({menuItems}) => {
 					</div>
 				</li>
 			</ul>
+
 		</nav>
 	)
 }

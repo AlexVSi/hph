@@ -14,6 +14,9 @@ body {
 	font-family: $fontFamily;
 	font-size: $fontSize;
 }
+body.lock {
+	overflow: hidden;
+}
 .wrapper {
 	min-height: 100%;
 	overflow: hidden;
@@ -29,6 +32,7 @@ body {
 }
 
 main {
+	padding-top: toRem(90);
 	flex: 1 1 auto;
 }
 
@@ -83,6 +87,9 @@ p, li {
 }
 // MOBILE =================================================================
 @media(max-width: $mobile) {
+	main {
+		padding-top: toRem(70);
+	}
 	h1 {
 		font-size: toRem(44);
 	}
