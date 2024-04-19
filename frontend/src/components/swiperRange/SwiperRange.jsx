@@ -1,6 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useTranslation } from "react-i18next";
+import Button from "../UI/button/Button";
 
 import './SwiperRange.scss'
 
@@ -14,35 +16,42 @@ import cupImg from './../../img/products/cup.svg'
 import papperPackImg from './../../img/products/papper-pack.svg'
 import petPackImg from './../../img/products/pet-pack.svg'
 import sanitazierImg from './../../img/products/sanitazier.svg'
-import Button from "../UI/button/Button";
+import Link from '../UI/link/Link';
 
 const SwiperRange = () => {
+	const [value, setValue] = useState();
+	const {t} = useTranslation()
 	const productsList = [
 		{
-			title: 'ПЭТ-упаковка',
+			title: t('productsList.petPack'),
 			img: petPackImg
 		},
 		{
-			title: 'Бумажные пакеты',
+			title: t('productsList.papperPack'),
 			img: papperPackImg
 		},
 		{
-			title: 'Хозяйственные сумки',
+			title: t('productsList.bag'),
 			img: bagImg
 		},
 		{
-			title: 'Всё для готовки и доставки',
+			title: t('productsList.container'),
 			img: containerImg
 		},
 		{
-			title: 'Одноразовая посуда',
+			title: t('productsList.cup'),
 			img: cupImg
 		},
 		{
-			title: 'Товары для уборки и гигиены',
+			title: t('productsList.sanitazier'),
 			img: sanitazierImg
 		},
 	]
+
+	useEffect(() => {
+		setValue({})
+	},
+	[localStorage.getItem('language')])
 
 	return (
 		<div className='slider__wrapper'>
@@ -67,7 +76,7 @@ const SwiperRange = () => {
 							<div className="product-img__block">
 								<img src={item.img} alt="" />
 							</div>
-							<Button>Узнать больше</Button>
+							<Link href={'#'}>{t('buttons.learnMore')}</Link>
 						</SwiperSlide>
 					)
 				})}

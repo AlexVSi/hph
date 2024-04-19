@@ -1,11 +1,12 @@
 import React from "react";
+import classes from './Link.module.scss';
 
-const MyButton = ({props, children}) => {
+const Link = ({href, children}) => {
 	return (
-		<button>
+		<a href={href} className={classes.link}>
 			{children}
-		</button>
+		</a>
 	)
 }
 
-export default MyButton
+export default Link

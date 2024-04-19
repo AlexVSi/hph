@@ -1,0 +1,69 @@
+{
+	"menuItems": {
+		"catalog": "Catalog",
+		"contacts": "Contacts"
+	},
+	"subTitle": "Only the best solutions for packaging, home, hotels, restaurants and cafes",
+	"buttons": {
+		"toCatalog": "Go to catalog",
+		"learnMore": "Learn more",
+		"callback": "Connect with us"
+	},
+	"h2": {
+		"who": "Who are we?",
+		"range": "Our range",
+		"advantages": "Our advantages",
+		"findUs": "How to find us?"
+	},
+	"aboutUs": {
+		"partner": "Solution for HPH is your reliable partner for home and business.",
+		"ourSolution": "We offer solutions for:",
+		"ourSolutionList": {
+			"home": "Home",
+			"hotels": "Hotels",
+			"restourantAndCasee": "Restaurants and cafes",
+			"products": "Food manufacturers"
+		},
+		"contribute": "By working with us, you get:",
+		"contributeList": {
+			"quality": "High quality",
+			"range": "A wide range",
+			"prices": "Favorable prices",
+			"friendly": "Friendly service"
+		}
+	},
+	"advantagesList": {
+		"range": {
+			"title": "A wide range",
+			"description": "A wide range of goods for home, hotels, restaurants and cafes. Everything you need for your business!"
+		},
+		"quality": {
+			"title": "Quality products",
+			"description": "We work exclusively with certified products that meet modern standards"
+		},
+		"prices": {
+			"title": "Favorable prices",
+			"description": "We keep prices at the optimal level. We offer only the best solutions at the best cost"
+		},
+		"friendly": {
+			"title": "Friendly staff",
+			"description": "Ready for mutual cooperation, open to dialogue"
+		},
+		"delivery": {
+			"title": "Delivery",
+			"description": "Fast delivery to any point in Moldova. The cost and terms of delivery are specified individually"
+		},
+		"wholasels": {
+			"title": "Wholesale sales",
+			"description": "We sell wholesale and cooperate, but then I don’t know what to think of, but I’ll come up with it later"
+		}
+	},
+	"productsList": {
+		"petPack": "PET-packaging",
+		"papperPack": "Paper bags",
+		"bag": "Shopping bags",
+		"container": "Everything for cooking and delivery",
+		"cup": "Disposable tableware",
+		"sanitazier": "Cleaning and hygiene products"
+	}
+}

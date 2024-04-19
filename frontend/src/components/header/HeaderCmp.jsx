@@ -1,16 +1,13 @@
-import { useState, useContext } from 'react';
-import AppContext from "../../context/context";
-
-import Nav from '../nav/Nav';
-import hphLogo from './../../img/logoBlk.svg';
-import menuBurger from './../../img/menuBurger.svg'
-import text from '../text/text';
+import { useState } from 'react';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import { useTranslation } from 'react-i18next';
+import i18n from '../../i18n';
 import classes from './HeaderCmp.module.scss';
-import MenuBurger from '../menuBurger/MenuBurger';
+
+import hphLogo from './../../img/logoBlk.svg';
 import DecorElement from '../UI/element/DecorElement';
 
 const HeaderCmp = () => {
-	const lang = useContext(AppContext)
 	const [burgerActive, setBurgerActive] = useState(false)
 
 	function handlerBurgerActive () {
@@ -22,45 +19,45 @@ const HeaderCmp = () => {
 			body.classList.remove('lock')
 		}
 	}
+	const {t} = useTranslation()
+	const [language, setLanguage] = useLocalStorage('language', 'ru')
 
-	function changeLanguage(value) {
-		// setLanguage(value)
-		AppContext.language = value
+	function handleLanguageChange(value) {
+		i18n.changeLanguage(value)
+		setLanguage(value)
+		window.location.reload()
 	}
+
+	const optionLangs = ["RU", "RO", "EN"]
 
 	return (
 		<header className={classes.header}>
 			<div className={classes.header__container}>
 				<div className={classes.logo}>
-					<a href=""><img src={hphLogo} alt="logo" /></a>
+					<a href="#"><img src={hphLogo} alt="logo" /></a>
 				</div>
 				<nav className={burgerActive ? `${classes.header__menu} ${classes.active}` : `${classes.header__menu}`}>
-					{/* {burgerActive && <DecorElement/>} */}
+					{burgerActive && <DecorElement/>}
 					<ul className={classes.menu__list}>
-
-						{text.menuItems.map(item =>
-							<li key={item['en']} className="menu__item">{item[lang.language]}</li>
-						)}
-
+						<a href="#"><li className="menu__item">{t('menuItems.catalog')}</li></a>
+						<a href='#contacts'><li className="menu__item">{t('menuItems.contacts')}</li></a>
 						<li className="menu__item lang">
 							<div className="language">
-								<select name="" id="" onChange={(e) => changeLanguage(e.target.value)}>
-									<option value="ru">RU</option>
-									<option value="ro">RO</option>
-									<option value="en">EN</option>
+								<select name="" id="" defaultValue={JSON.parse(localStorage.getItem('language'))} onChange={(e) => handleLanguageChange(e.target.value)}>
+									{optionLangs.map((item, index) => {
+										return (
+											<option value={item.toLowerCase()} key={index}>{item}</option>
+										)
+									})}
 								</select>
 							</div>
 						</li>
 					</ul>
 				</nav>
-
 				<div className={burgerActive ? `${classes.burger__button} ${classes.active}` : `${classes.burger__button}`} onClick={() => handlerBurgerActive()}>
-				{/* <div className={burgerActive ? `${classes.burger__button} ${classes.active}` : `${classes.burger__button}`} onClick={() => setBurgerActive()}> */}
-					{/* <img src={menuBurger} alt="" /> */}
 						<span></span>
 				</div>
 			</div>
-			{/* <MenuBurger active={burgerActive}/> */}
 		</header>
 	)
 }

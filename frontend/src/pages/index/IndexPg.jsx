@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
 import Aos from "aos";
- 
+import { useTranslation } from "react-i18next";
+
 import './IndexPg.scss'
 
 import HeaderCmp from "../../components/header/HeaderCmp";
 import Button from "../../components/UI/button/Button";
 import FooterCmp from "../../components/footer/FooterCmp";
 import DecorElement from "../../components/UI/element/DecorElement";
-import text from "../../components/text/text";
-import AppContext from "../../context/context";
 import Advantage from "../../components/advantage/Advantage";
 import SwiperRange from "../../components/swiperRange/SwiperRange";
+import Link from "../../components/UI/link/Link";
+
 
 // img ======================================
 import boxyImg from './../../img/boxy.svg'
@@ -30,7 +31,7 @@ import boxImg from './../../img/Box.svg'
 
 
 const IndexPg = () => {
-	const lang = useContext(AppContext)
+	const {t} = useTranslation()
 	Aos.init()
 
 	let animateType = ''
@@ -46,33 +47,33 @@ const IndexPg = () => {
 
 	const advantagesList = [
 		{
-			title: 'Широкий ассортимент',
-			description: 'Широкий ассортимент товаров для дома, отелей, ресторанов и кафе. Всё что необходимо для вашего бизнеса!',
+			title: t('advantagesList.range.title'),
+			description: t('advantagesList.range.description'),
 			img: basketImg
 		},
 		{
-			title: 'Качественная продукция',
-			description: 'Работаем исключительно с прошедшей сертификацию продукцией, соответствующей современным стандартам',
+			title: t('advantagesList.quality.title'),
+			description: t('advantagesList.quality.description'),
 			img: starImg
 		},
 		{
-			title: 'Выгодные цены',
-			description: 'Держим цены на оптимальном уровне. Предлагаем только лучшие решения по оптимальной стоимости',
+			title: t('advantagesList.prices.title'),
+			description: t('advantagesList.prices.description'),
 			img: priceImg
 		},
 		{
-			title: 'Дружелюбный персонал',
-			description: 'Готовы к взаимному сотрудничеству, открыты для диалога',
+			title: t('advantagesList.friendly.title'),
+			description: t('advantagesList.friendly.description'),
 			img: personalImg
 		},
 		{
-			title: 'Доставка',
-			description: 'Быстрая доставка в любую точку Молдовы. Стоимость и условия доставки уточняются индивидуально',
+			title: t('advantagesList.delivery.title'),
+			description: t('advantagesList.delivery.description'),
 			img: carImg
 		},
 		{
-			title: 'Продажа оптом',
-			description: 'Осуществляем продажу оптом и сотрудничаем чет-то там дальше я не знаю что придумать, потом придумаю',
+			title: t('advantagesList.wholasels.title'),
+			description: t('advantagesList.wholasels.description'),
 			img: boxImg
 		},
 	]
@@ -88,8 +89,8 @@ const IndexPg = () => {
 							<div className="title__text">
 								<h1>Solution for home, packing and HoReCa</h1>
 								<DecorElement/>
-								<p className="sub__title">{text.titleText[0][lang.language]}</p>
-								<Button>Перейти в каталог</Button>
+								<p className="sub__title">{t('subTitle')}</p>
+								<Link href={'#'}>{t('buttons.toCatalog')}</Link>
 							</div>
 						</div>
 					</div>
@@ -97,29 +98,29 @@ const IndexPg = () => {
 				<section className="about__section">
 					<div className="about__container container">
 						<div className="about-title__block">
-							<h2>Кто мы?</h2>
+							<h2>{t('h2.who')}</h2>
 							<img src={boxyImg} alt="" />
 						</div>
 						<div className="about__block">
 							<div className="text__block">
 								<DecorElement/>
-								<p>Solution for HPH – ваш надежный партнер для дома и бизнеса.</p>
-								<p>Мы предлагаем решения для:</p>
+								<p>{t('aboutUs.partner')}</p>
+								<p>{t('aboutUs.ourSolution')}</p>
 								<ul>
-									<li>Дома</li>
-									<li>Отелей</li>
-									<li>Ресторанов и кафе</li>
-									<li>Производителей пищевых продуктов</li>
+									<li>{t('aboutUs.ourSolutionList.home')}</li>
+									<li>{t('aboutUs.ourSolutionList.hotels')}</li>
+									<li>{t('aboutUs.ourSolutionList.restourantAndCasee')}</li>
+									<li>{t('aboutUs.ourSolutionList.products')}</li>
 								</ul>
 								<DecorElement/>
-								<p>Сотрудничая с нами, вы получаете:</p>
+								<p>{t('aboutUs.contribute')}</p>
 								<ul>
-									<li>Высокое качество продукции</li>
-									<li>Широкий ассортимент</li>
-									<li>Выгодные цены</li>
-									<li>Дружелюбный сервис</li>
+									<li>{t('aboutUs.contributeList.quality')}</li>
+									<li>{t('aboutUs.contributeList.range')}</li>
+									<li>{t('aboutUs.contributeList.prices')}</li>
+									<li>{t('aboutUs.contributeList.friendly')}</li>
 								</ul>
-								<Button>Связаться с нами</Button>
+								<Link href={'#contacts'}>{t('buttons.callback')}</Link>
 							</div>
 							<div className="boxy">
 								<img src={boxyImg} alt="boxy" />
@@ -129,14 +130,14 @@ const IndexPg = () => {
 				</section>
 				<section className="product-range__section" id="scroll-magic">
 					<div className="product-range__container container">
-						<h2>Наш ассортимент</h2>
+						<h2>{t('h2.range')}</h2>
 						<DecorElement/>
 						<SwiperRange/>
 					</div>
 				</section>
 				<section className="advantages__section">
 					<div className="advantages__container container">
-						<h2>Наши преимущества</h2>
+						<h2>{t('h2.advantages')}</h2>
 						<div className="advantages__block">
 							{advantagesList.map(item => {
 								animate()
@@ -147,18 +148,18 @@ const IndexPg = () => {
 						</div>
 					</div>
 				</section>
-				<section className="map__section">
-					<div className="map__container container">
+				<section className="contacts__section" id="contacts">
+					<div className="contacts__container container">
 						<div className="contacts__block">
-							<h2>Как нас найти?</h2>
+							<h2>{t('h2.findUs')}</h2>
 							<ul>
 								<li><img src={emailImg} alt="email" className="contacts__icon"/>ambalaj.balti@gmail.com</li>
 								<li><img src={phoneImg} alt="phone" className="contacts__icon"/>+373 69 120 914</li>
 								<li><img src={locationImg} alt="location" className="contacts__icon"/>Strada Mihai Viteazul 25, Bălți 3100</li>
 							</ul>
 							<div className="social-media__block">
-								<img src={telegramImg} alt="telegram" />
-								<img src={instagramImg} alt="instagram" />
+								<a href=""><img src={telegramImg} alt="telegram" /></a>
+								<a href=""><img src={instagramImg} alt="instagram" /></a>
 							</div>
 						</div>
 						<div className="map__block">

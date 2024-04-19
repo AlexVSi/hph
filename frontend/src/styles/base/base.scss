@@ -28,7 +28,7 @@ body.lock {
 .container {
 	max-width: toRem($maxWidthContainer); /*1140 + 30px (отступы безопасности)*/
 	margin: 0 auto;
-	padding: toRem(30) toRem(15); /*Отступ безопасности*/
+	padding: toRem(40) toRem(15); /*Отступ безопасности*/
 }
 
 main {
@@ -55,27 +55,6 @@ p, li {
 	font-weight: 500;
 	font-size: $fontSize;
 }
-
-// a {
-// 	border: toRem(2) solid $mainColor;
-// 	border-radius: toRem(54);
-// 	padding: toRem(8) toRem(24);
-// 	width: max-content;
-// 	font-weight: 700;
-// 	font-size: toRem(24);
-// 	text-align: center;
-// 	color: $mainColor;
-// 	background-color: none;
-// 	transition: 0.2s;
-// 	background-color: #ffffff00;
-	
-// 	&:hover {
-// 		color: $fontColorLight;
-// 		background-color: $mainColor;
-// 	}
-// }
-
-
 
 // PC ====================================================================
 @media(max-width: $pc) {

@@ -2,17 +2,24 @@ import React, { useContext, useState } from 'react'
 import Button from './components/UI/button/Button'
 import './styles/style.scss';
 import IndexPg from './pages/index/IndexPg';
-import AppContext from './context/context';
+import { useTranslation } from 'react-i18next';
+import useLocalStorage from './hooks/useLocalStorage';
+import i18n from './i18n';
 
 const App = () => {
-	const [language, setLanguage] = useState('ru')
-	const lang = useContext(AppContext)
+	const {t} = useTranslation();
+	const [language, setLanguage] = useLocalStorage('language', 'ru')
+
+	const handleLanguageChange = () => {
+		if (language === 'en') {
+			i18n.changeLanguage('')
+		}
+	}
 
 	return (
-		<AppContext.Provider value={{language: 'ru',}}>
+		<>
 			<IndexPg/>
-		</AppContext.Provider>
-
+		</>
 	)
 }
 
