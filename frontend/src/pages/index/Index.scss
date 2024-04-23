@@ -155,18 +155,21 @@
 	.boxy {
 		display: none;
 	}
+	.product-range__container {
+		h2 {
+			text-align: center;
+		}
+	}
+	.advantages__block {
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(6, 1fr);
+	}
 	.contacts__block, .map__block {
 		flex: 1 1 100%;
 	}
 	.map__block {
 		height: toRem(300);
 	}
-	.service {
-		flex: 1 1 100%;
-	}
-	.advantages__block {
-		grid-template-columns: 1fr;
-		grid-template-rows: repeat(6, 1fr);
-	}
+
 }
 

@@ -1,15 +1,15 @@
 import React from "react";
-import './Advantage.scss'
+import classes from'./Advantage.module.scss'
 
 
 const Advantage = ({title, description, img, animate}) => {
 	return (
-		<div className="advantage" data-aos={animate}>
-			<div className="advantage__head">
+		<div className={classes.advantage} data-aos={animate}>
+			<div className={classes.advantage__head}>
 				<img src={img} alt="" />
-				<div className="advantage__title">{title}</div>
+				<div className={classes.advantage__title}>{title}</div>
 			</div>
-			<div className="advantage__description">
+			<div className={classes.advantage__description}>
 				{description}
 			</div>
 		</div>

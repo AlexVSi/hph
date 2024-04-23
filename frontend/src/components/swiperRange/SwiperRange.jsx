@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useTranslation } from "react-i18next";
-import Button from "../UI/button/Button";
+import Link from '../UI/link/Link';
 
 import './SwiperRange.scss'
 
@@ -16,10 +16,8 @@ import cupImg from './../../img/products/cup.svg'
 import papperPackImg from './../../img/products/papper-pack.svg'
 import petPackImg from './../../img/products/pet-pack.svg'
 import sanitazierImg from './../../img/products/sanitazier.svg'
-import Link from '../UI/link/Link';
 
 const SwiperRange = () => {
-	const [value, setValue] = useState();
 	const {t} = useTranslation()
 	const productsList = [
 		{
@@ -48,13 +46,8 @@ const SwiperRange = () => {
 		},
 	]
 
-	useEffect(() => {
-		setValue({})
-	},
-	[localStorage.getItem('language')])
-
 	return (
-		<div className='slider__wrapper'>
+		<div className="slider__wrapper">
 			<ul className="slide__pagination"></ul>
 			<Swiper
 				modules={[Pagination, A11y, Navigation]}

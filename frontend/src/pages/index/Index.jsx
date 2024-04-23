@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import Aos from "aos";
 import { useTranslation } from "react-i18next";
 
-import './IndexPg.scss'
+import './Index.scss'
 
-import HeaderCmp from "../../components/header/HeaderCmp";
-import Button from "../../components/UI/button/Button";
-import FooterCmp from "../../components/footer/FooterCmp";
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
 import DecorElement from "../../components/UI/element/DecorElement";
 import Advantage from "../../components/advantage/Advantage";
 import SwiperRange from "../../components/swiperRange/SwiperRange";
@@ -80,14 +79,14 @@ const IndexPg = () => {
 
 	return (
 		<div className="wrapper">
-			<HeaderCmp/>
+			<Header/>
 			<main>
 				<div className=""></div>
 				<section className="title__section">
 					<div className="title__wrapper">
 						<div className="title__container container">
 							<div className="title__text">
-								<h1>Solution for home, packing and HoReCa</h1>
+								<h1>{t('h1')}</h1>
 								<DecorElement/>
 								<p className="sub__title">{t('subTitle')}</p>
 								<Link href={'#'}>{t('buttons.toCatalog')}</Link>
@@ -168,7 +167,7 @@ const IndexPg = () => {
 					</div>
 				</section>
 			</main>
-			<FooterCmp/>
+			<Footer/>
 		</div>
 	)
 }

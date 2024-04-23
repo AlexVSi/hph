@@ -18,3 +18,10 @@
 		background-color: $mainColor;
 	}
 }
+
+
+@media(max-width: $mobile) {
+.link {
+	font-size: toRem(20);
+	}
+}

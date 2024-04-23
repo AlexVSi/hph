@@ -69,6 +69,9 @@ p, li {
 	main {
 		padding-top: toRem(70);
 	}
+	.container {
+		padding: toRem(20) toRem(15); /*Отступ безопасности*/
+	}
 	h1 {
 		font-size: toRem(44);
 	}
@@ -79,7 +82,7 @@ p, li {
 		font-size: toRem(18);
 	}
 	p, li {
-		font-size: toRem(18);
+		font-size: toRem(20);
 	}
 }
 // MOBILE_SMALL ===========================================================

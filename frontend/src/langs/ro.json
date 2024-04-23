@@ -1,8 +1,70 @@
 {
+	"h1": "Soluție pentru casă, ambalaje și HoReCa",
 	"menuItems": {
 		"catalog": "Catalog",
 		"contacts": "Contacte"
 	},
-	"subTitle": "sdfsdfdfds"
-
+	"subTitle": "Doar cele mai bune soluții pentru ambalare, casă, hoteluri, restaurante și cafenele",
+	"buttons": {
+		"toCatalog": "Mergi la catalog",
+		"learnMore": "Pentru a afla mai multe",
+		"callback": "Conecteaza-te cu noi"
+	},
+	"h2": {
+		"who": "Cine suntem noi?",
+		"range": "Gama noastră",
+		"advantages": "Avantajele noastre",
+		"findUs": "Cum să ne găsești?"
+	},
+	"aboutUs": {
+		"partner": "Solution for HPH este partenerul dumneavoastră de încredere pentru acasă și afaceri.",
+		"ourSolution": "Oferim solutii pentru:",
+		"ourSolutionList": {
+			"home": "Acasă",
+			"hotels": "Hoteluri",
+			"restourantAndCasee": "Restaurante și cafenele",
+			"products": "Producătorii de alimente"
+		},
+		"contribute": "Lucrând cu noi, obțineți:",
+		"contributeList": {
+			"quality": "Calitate superioară",
+			"range": "O gamă largă de",
+			"prices": "Preturi avantajoase",
+			"friendly": "Serviciu prietenos"
+		}
+	},
+	"advantagesList": {
+		"range": {
+			"title": "O gamă largă de",
+			"description": "O gamă largă de bunuri pentru casă, hoteluri, restaurante și cafenele. Tot ce ai nevoie pentru afacerea ta!"
+		},
+		"quality": {
+			"title": "Produse de calitate",
+			"description": "Lucrăm exclusiv cu produse certificate care îndeplinesc standardele moderne"
+		},
+		"prices": {
+			"title": "Preturi avantajoase",
+			"description": "Mentinem preturile la nivelul optim. Oferim doar cele mai bune soluții la cel mai bun preț"
+		},
+		"friendly": {
+			"title": "Angajati prietenosi",
+			"description": "Pregătit pentru cooperare reciprocă, deschis la dialog"
+		},
+		"delivery": {
+			"title": "Livrare",
+			"description": "Livrare rapida in orice punct din Moldova. Costul și termenele de livrare sunt specificate individual"
+		},
+		"wholasels": {
+			"title": "Vânzări cu ridicata",
+			"description": "Vindem en-gros și suntem deschiși cooperării cu toți clienții"
+		}
+	},
+	"productsList": {
+		"petPack": "Ambalaj PET",
+		"papperPack": "Pungi de hârtie",
+		"bag": "Pungi de cumparaturi",
+		"container": "Totul pentru gătit și livrare",
+		"cup": "Veselă de unică folosință",
+		"sanitazier": "Produse de curatenie si igiena"
+	}
 }

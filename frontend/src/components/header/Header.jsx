@@ -2,7 +2,7 @@ import { useState } from 'react';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n';
-import classes from './HeaderCmp.module.scss';
+import classes from './Header.module.scss';
 
 import hphLogo from './../../img/logoBlk.svg';
 import DecorElement from '../UI/element/DecorElement';
@@ -28,7 +28,7 @@ const HeaderCmp = () => {
 		window.location.reload()
 	}
 
-	const optionLangs = ["RU", "RO", "EN"]
+	const optionsLangs = ["RU", "RO", "EN"]
 
 	return (
 		<header className={classes.header}>
@@ -37,14 +37,16 @@ const HeaderCmp = () => {
 					<a href="#"><img src={hphLogo} alt="logo" /></a>
 				</div>
 				<nav className={burgerActive ? `${classes.header__menu} ${classes.active}` : `${classes.header__menu}`}>
-					{burgerActive && <DecorElement/>}
+					{/* {burgerActive && <DecorElement/>} */}
+					{/* <DecorElement/> */}
+					<div className={classes.burgerElement}></div>
 					<ul className={classes.menu__list}>
-						<a href="#"><li className="menu__item">{t('menuItems.catalog')}</li></a>
-						<a href='#contacts'><li className="menu__item">{t('menuItems.contacts')}</li></a>
-						<li className="menu__item lang">
-							<div className="language">
-								<select name="" id="" defaultValue={JSON.parse(localStorage.getItem('language'))} onChange={(e) => handleLanguageChange(e.target.value)}>
-									{optionLangs.map((item, index) => {
+						<a href="#"><li className={classes.menu__item}>{t('menuItems.catalog')}</li></a>
+						<a href='#contacts'><li className={classes.menu__item}>{t('menuItems.contacts')}</li></a>
+						<li className={classes.menu__item}>
+							<div className={classes.language__select__box}>
+								<select name="languages" defaultValue={JSON.parse(localStorage.getItem('language'))} onChange={(e) => handleLanguageChange(e.target.value)}>
+									{optionsLangs.map((item, index) => {
 										return (
 											<option value={item.toLowerCase()} key={index}>{item}</option>
 										)

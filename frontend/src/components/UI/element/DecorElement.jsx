@@ -1,9 +1,9 @@
 import React from "react";
-import './DecorElement.scss'
+import "./DecorElement.scss";
 
 const DecorElement = () => {
 	return (
-		<div className="element"></div>
+		<div className='element'></div>
 	)
 }
 
