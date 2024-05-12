@@ -1,0 +1,177 @@
+.title__section {
+	position: relative;
+	background: url(@shared/assets/images/Stationery-Branding-Mockup.jpg) no-repeat;
+	background-size: cover;
+	background-position: top left;
+}
+.title__wrapper {
+	background-color: #00000087;
+	width: 100%;
+	height: 100%;
+}
+
+.title__text {
+	display: grid;
+	gap: toRem(40);
+	width: 60%;
+	@include adaptive-value('padding-top', 140, 100, 1);
+	@include adaptive-value('padding-bottom', 170, 100, 1);
+}
+.sub__title {
+	font-weight: 400;
+	color: $fontColorLight;
+}
+
+.about-title__block {
+	h2 {
+		text-align: center;
+	}
+	img {
+		display: none;
+	}
+}
+.about__container {
+	padding: toRem(30) toRem(15);
+}
+.about__block {
+	display: flex;
+	justify-content: space-between;
+	gap: toRem(20);
+}
+.text__block {
+	display: flex;
+	gap: toRem(14);
+	flex-direction: column;
+	p, ul, li {
+		line-height: 150%;
+	}
+	ul {
+		padding-left: toRem(6);
+	}
+	li {
+		padding-left: toRem(28);
+		background-image: url(@shared/assets/icons/point.svg);
+		background-position: 0 50%;
+		background-repeat: no-repeat;
+	}
+}
+
+.product-range__block {
+	padding: toRem(30) 0;
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: toRem(30);
+}
+
+.advantages__container {
+	h2 {
+		text-align: center;
+	}
+}
+.advantages__block {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	gap: toRem(30);
+}
+
+.contacts__container {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: toRem(30);
+}
+
+.contacts__block {
+	display: flex;
+	flex-direction: column;
+	gap: toRem(30);
+	flex: 0 1 50%;
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: toRem(30);
+	}
+	li {
+		display: flex;
+		align-items: center;
+		gap: toRem(20);
+		img {
+			max-height: toRem(40);
+			width: 8%;
+		}
+	}
+	a, a:visited {
+		color: $fontColorBlack;
+	}
+}
+
+.social-media__block {
+	display: flex;
+	gap: toRem(20);
+}
+
+.map__block {
+	flex: 1 1 auto;
+	iframe {
+
+		width: 100%;
+		height: 100%;
+		border-radius: toRem(10);
+		&:active {
+			outline: none;
+			border: none;
+		}
+
+	}
+}
+
+// TABLET =================================================================
+@media(max-width: $tablet) {
+	.title__text {
+		width: 100%;
+	}
+	.title__section {
+		position: relative;
+		background-size: cover;
+		background-position: top center;
+	}
+}
+
+@media(max-width: $mobile) {
+	.about-title__block {
+		display: flex;
+		align-items: center;
+		@include adaptive-value('gap', 100, 20, 1);
+		h2 {
+			text-align: center;
+		}
+		img {
+			display: block;
+			width: toRem(100);
+			height: toRem(100);
+			padding: toRem(4);
+		}
+	}
+	.boxy {
+		display: none;
+	}
+	.product-range__container {
+		h2 {
+			text-align: center;
+		}
+	}
+	.advantages__block {
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(6, 1fr);
+	}
+	.contacts__block, .map__block {
+		flex: 1 1 100%;
+	}
+	.map__block {
+		height: toRem(300);
+	}
+
+}
+

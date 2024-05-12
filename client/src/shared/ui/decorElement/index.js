@@ -1,0 +1,1 @@
+export { DecorElement } from './DecorElement'
