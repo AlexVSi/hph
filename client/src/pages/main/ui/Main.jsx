@@ -139,7 +139,7 @@ export const Main = () => {
 							{advantagesList.map((item, index) => {
 								animate()
 								return (
-									<Advantage title={item.title} description={item.description} img={item.index} key={item.title} animate={animateType}/>
+									<Advantage title={item.title} description={item.description} img={item.img} key={item.index} animate={animateType}/>
 								)
 							})}
 						</div>

@@ -1,7 +1,6 @@
 import React from "react";
 import classes from'./Advantage.module.scss'
 
-
 export const Advantage = ({title, description, img, animate}) => {
 	return (
 		<div className={classes.advantage} data-aos={animate}>
