@@ -87,7 +87,7 @@ export const Main = () => {
 								<h1>{t('h1')}</h1>
 								<DecorElement/>
 								<p className="sub__title">{t('subTitle')}</p>
-								<Button>{t('buttons.toCatalog')}</Button>
+								<Button><a href="https://docs.google.com/spreadsheets/d/1ZWaMAldiBkwO5MKzKd7UMiql4yMbXL8uVn6eK7dPPvI/edit#gid=1264432496"></a>{t('buttons.toCatalog')}</Button>
 							</div>
 						</div>
 					</div>
@@ -136,10 +136,10 @@ export const Main = () => {
 					<div className="advantages__container container">
 						<h2>{t('h2.advantages')}</h2>
 						<div className="advantages__block">
-							{advantagesList.map(item => {
+							{advantagesList.map((item, index) => {
 								animate()
 								return (
-									<Advantage title={item.title} description={item.description} img={item.img} key={item.title} animate={animateType}/>
+									<Advantage title={item.title} description={item.description} img={item.index} key={item.title} animate={animateType}/>
 								)
 							})}
 						</div>
@@ -149,6 +149,7 @@ export const Main = () => {
 					<div className="contacts__container container">
 						<div className="contacts__block">
 							<h2>{t('h2.findUs')}</h2>
+							<DecorElement/>
 							<ul>
 								<a href="mailto:ambalaj.balti@gmail.com"><li><img src={emailImg} alt="email" className="contacts__icon"/>ambalaj.balti@gmail.com</li></a>
 								<a href="tel:+373 69 120 914"><li><img src={phoneImg} alt="phone" className="contacts__icon"/>+373 69 120 914</li></a>

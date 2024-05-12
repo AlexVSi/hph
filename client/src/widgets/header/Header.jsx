@@ -1,16 +1,14 @@
 import { useState } from 'react';
-import useLocalStorage from '@shared/hooks/useLocalStorage';
 import { useTranslation } from 'react-i18next';
-import i18n from '@shared/lib/i18n/i18n';
+import { Dropdown } from '@features/dropdown/Dropdown';
 import classes from './Header.module.scss';
-
 import hphLogo from '@shared/assets/icons/logoBlk.svg';
-// import DecorElement from '../UI/element/DecorElement';
 
 export const Header = () => {
+	const {t} = useTranslation()
 	const [burgerActive, setBurgerActive] = useState(false)
 
-	function handlerBurgerActive () {
+	function handlerBurgerActive() {
 		setBurgerActive(!burgerActive)
 		const body = document.querySelector('body')
 		if (!burgerActive) {
@@ -19,16 +17,16 @@ export const Header = () => {
 			body.classList.remove('lock')
 		}
 	}
-	const {t} = useTranslation()
-	const [language, setLanguage] = useLocalStorage('language', 'ru')
-
-	function handleLanguageChange(value) {
-		i18n.changeLanguage(value)
-		setLanguage(value)
-		window.location.reload()
-	}
-
-	const optionsLangs = ["RU", "RO", "EN"]
+	const headerNavLinks = [
+		{
+			title: t('menuItems.catalog'),
+			link: 'https://docs.google.com/spreadsheets/d/1ZWaMAldiBkwO5MKzKd7UMiql4yMbXL8uVn6eK7dPPvI/edit#gid=1264432496',
+		},
+		{
+			title: t('menuItems.contacts'),
+			link: '#contacts',
+		},
+	]
 
 	return (
 		<header className={classes.header}>
@@ -37,22 +35,15 @@ export const Header = () => {
 					<a href="#"><img src={hphLogo} alt="logo" /></a>
 				</div>
 				<nav className={burgerActive ? `${classes.header__menu} ${classes.active}` : `${classes.header__menu}`}>
-					{/* {burgerActive && <DecorElement/>} */}
-					{/* <DecorElement/> */}
 					<div className={classes.burgerElement}></div>
 					<ul className={classes.menu__list}>
-						<a href="https://docs.google.com/spreadsheets/d/1ZWaMAldiBkwO5MKzKd7UMiql4yMbXL8uVn6eK7dPPvI/edit#gid=1264432496"><li className={classes.menu__item}>{t('menuItems.catalog')}</li></a>
-						<a href='#contacts'><li className={classes.menu__item}>{t('menuItems.contacts')}</li></a>
+						{headerNavLinks.map((item, index) => {
+							return (
+								<a onClick={handlerBurgerActive} target={item.link[0] !== '#' ? '_blank' : '_self'} href={item.link} key={index}><li className={classes.menu__item} key={index}>{item.title}</li></a>
+							)
+						})}
 						<li className={classes.menu__item}>
-							<div className={classes.language__select__box}>
-								<select name="languages" defaultValue={JSON.parse(localStorage.getItem('language'))} onChange={(e) => handleLanguageChange(e.target.value)}>
-									{optionsLangs.map((item, index) => {
-										return (
-											<option value={item.toLowerCase()} key={index}>{item}</option>
-										)
-									})}
-								</select>
-							</div>
+							<Dropdown/>
 						</li>
 					</ul>
 				</nav>

@@ -13,7 +13,7 @@ const resources = {
 		translation: ru,
 	},
 	ro: {
-		translation: ro
+		translation: ro,
 	},
 }
 

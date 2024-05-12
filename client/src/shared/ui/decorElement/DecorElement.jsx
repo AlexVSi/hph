@@ -1,8 +1,8 @@
 import React from "react";
-import "./DecorElement.scss";
+import classes from "./DecorElement.module.scss";
 
 export const DecorElement = () => {
 	return (
-		<div className='element'></div>
+		<div className={classes.element}></div>
 	)
 }

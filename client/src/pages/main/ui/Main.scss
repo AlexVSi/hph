@@ -55,7 +55,11 @@
 		background-repeat: no-repeat;
 	}
 }
-
+.product-range__container {
+	h2 {
+		text-align: center;
+	}
+}
 .product-range__block {
 	padding: toRem(30) 0;
 	display: grid;
@@ -88,6 +92,9 @@
 	flex-direction: column;
 	gap: toRem(30);
 	flex: 0 1 50%;
+	h2 {
+		padding: 0;
+	}
 	ul {
 		display: flex;
 		flex-direction: column;
@@ -156,11 +163,6 @@
 	}
 	.boxy {
 		display: none;
-	}
-	.product-range__container {
-		h2 {
-			text-align: center;
-		}
 	}
 	.advantages__block {
 		grid-template-columns: 1fr;
