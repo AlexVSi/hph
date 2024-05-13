@@ -17,6 +17,13 @@ export const Header = () => {
 			body.classList.remove('lock')
 		}
 	}
+
+	function clickMenuHandler() {
+		setBurgerActive(!burgerActive)
+		const body = document.querySelector('body')
+		body.classList.remove('lock')
+	}
+
 	const headerNavLinks = [
 		{
 			title: t('menuItems.catalog'),
@@ -39,7 +46,7 @@ export const Header = () => {
 					<ul className={classes.menu__list}>
 						{headerNavLinks.map((item, index) => {
 							return (
-								<a onClick={handlerBurgerActive} target={item.link[0] !== '#' ? '_blank' : '_self'} href={item.link} key={index}><li className={classes.menu__item} key={index}>{item.title}</li></a>
+								<a onClick={() => clickMenuHandler()} target={item.link[0] !== '#' ? '_blank' : '_self'} href={item.link} key={index}><li className={classes.menu__item} key={index}>{item.title}</li></a>
 							)
 						})}
 						<li className={classes.menu__item}>

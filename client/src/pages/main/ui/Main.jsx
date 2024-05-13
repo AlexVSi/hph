@@ -20,7 +20,7 @@ import instagramImg from '@shared/assets/icons/contacts/instagram.svg';
 
 // advantage-img
 import basketImg from '@shared/assets/icons/advantages/basket.svg'
-import starImg from '@shared/assets/icons/advantages//star.svg'
+import starImg from '@shared/assets/icons/advantages/star.svg'
 import priceImg from '@shared/assets/icons/advantages/price.svg'
 import personalImg from '@shared/assets/icons/advantages/personal.svg'
 import carImg from '@shared/assets/icons/advantages/car.svg'
@@ -87,7 +87,7 @@ export const Main = () => {
 								<h1>{t('h1')}</h1>
 								<DecorElement/>
 								<p className="sub__title">{t('subTitle')}</p>
-								<Button><a href="https://docs.google.com/spreadsheets/d/1ZWaMAldiBkwO5MKzKd7UMiql4yMbXL8uVn6eK7dPPvI/edit#gid=1264432496"></a>{t('buttons.toCatalog')}</Button>
+								<Button><a target="blank" href="https://docs.google.com/spreadsheets/d/1ZWaMAldiBkwO5MKzKd7UMiql4yMbXL8uVn6eK7dPPvI/edit#gid=1264432496"></a>{t('buttons.toCatalog')}</Button>
 							</div>
 						</div>
 					</div>
@@ -139,7 +139,7 @@ export const Main = () => {
 							{advantagesList.map((item, index) => {
 								animate()
 								return (
-									<Advantage title={item.title} description={item.description} img={item.img} key={item.index} animate={animateType}/>
+									<Advantage title={item.title} description={item.description} img={item.img} key={index} animate={animateType}/>
 								)
 							})}
 						</div>
