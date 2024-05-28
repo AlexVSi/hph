@@ -7,17 +7,6 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    // alias: {
-    //     app: '/src/app',
-    //     entities: '/src/entities',
-    //     features: '/src/features',
-    //     pages: '/src/pages',
-    //     shared: '/src/shared',
-    //     widgets: '/src/widgets',
-    //   },
-    // alias: {
-    //   '@': fileURLToPath(new URL('./src', import.meta.url))
-    //   },
     alias: {
       '@app': path.resolve('src/app'),
       '@entities': path.resolve('src/entities'),
@@ -26,9 +15,6 @@ export default defineConfig({
       '@shared': path.resolve('src/shared'),
       '@widgets': path.resolve('src/widgets'),
       },
-    // resolve: {
-    //   alias: [{ find: "@/", replacement: path.resolve(__dirname, "./src") }]
-    // }
     },
     css: {
       preprocessorOptions: {

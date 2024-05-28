@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useTranslation } from "react-i18next";
-import { Button } from '@shared/ui/button';
+import { LinkButton } from '@shared/ui/linkButton';
 
 import './SwiperRange.scss'
 
@@ -75,7 +75,7 @@ export const SwiperRange = () => {
 							<div className="product-img__block">
 								<img src={item.img} alt="" />
 							</div>
-							<Button><a target='blank' href={item.link}></a>{t('buttons.learnMore')}</Button>
+							<LinkButton target={'_blank'} link={item.link}>{t('buttons.learnMore')}</LinkButton>
 						</SwiperSlide>
 					)
 				})}

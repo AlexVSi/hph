@@ -6,7 +6,7 @@ import { Footer } from "@widgets/footer/Footer";
 import { DecorElement } from "@shared/ui/decorElement/DecorElement";
 import { Advantage } from "@widgets/advantage/Advantage";
 import { SwiperRange } from "@widgets/swiperRange/SwiperRange";
-import { Button } from "@shared/ui/button/Button";
+import { LinkButton } from "@shared/ui/linkButton";
 
 import './Main.scss'
 
@@ -87,7 +87,7 @@ export const Main = () => {
 								<h1>{t('h1')}</h1>
 								<DecorElement/>
 								<p className="sub__title">{t('subTitle')}</p>
-								<Button><a target="blank" href="https://docs.google.com/spreadsheets/d/1ZWaMAldiBkwO5MKzKd7UMiql4yMbXL8uVn6eK7dPPvI/edit#gid=1264432496"></a>{t('buttons.toCatalog')}</Button>
+								<LinkButton target={'_blank'} link={'https://docs.google.com/spreadsheets/d/1ZWaMAldiBkwO5MKzKd7UMiql4yMbXL8uVn6eK7dPPvI/edit#gid=1264432496'}>{t('buttons.toCatalog')}</LinkButton>
 							</div>
 						</div>
 					</div>
@@ -117,7 +117,7 @@ export const Main = () => {
 									<li>{t('aboutUs.contributeList.prices')}</li>
 									<li>{t('aboutUs.contributeList.friendly')}</li>
 								</ul>
-								<Button><a href="#contacts"></a>{t('buttons.callback')}</Button>
+								<LinkButton link={'#contacts'}>{t('buttons.callback')}</LinkButton>
 							</div>
 							<div className="boxy">
 								<img src={boxyImg} alt="boxy" />
@@ -145,7 +145,8 @@ export const Main = () => {
 						</div>
 					</div>
 				</section>
-				<section className="contacts__section" id="contacts">
+				<section className="contacts__section">
+					<a id="contacts"></a>
 					<div className="contacts__container container">
 						<div className="contacts__block">
 							<h2>{t('h2.findUs')}</h2>

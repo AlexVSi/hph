@@ -79,7 +79,13 @@
 	grid-template-rows: 1fr 1fr 1fr;
 	gap: toRem(30);
 }
-
+.contacts__section {
+	position: relative;
+	#contacts {
+		position: absolute;
+		top: -50px;
+	}
+}
 .contacts__container {
 	display: flex;
 	justify-content: space-between;
