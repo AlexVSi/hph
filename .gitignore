@@ -155,5 +155,4 @@ dist
 .pnp.*
 
 design
-package-lock.json
 hph.drawio
