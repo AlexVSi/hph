@@ -21,7 +21,6 @@ export class CreateUserDto {
     readonly password: string
 
     @ApiProperty({ example: '', description: '' })
-    @IsString({ message: 'Должно быть строкой' })
     readonly activationLink?: string;
 
 }

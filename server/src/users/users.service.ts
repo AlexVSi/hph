@@ -46,4 +46,17 @@ export class UsersService {
         const bannedUser = await this.bannedUserRepository.create(dto)
         return bannedUser
     }
+
+    async activate(activationLink: string) {
+        const user = await this.userRepository.findOne({
+            where: {
+                activationLink: activationLink
+            }
+        })
+        if (!user) {
+            throw new HttpException('Ссылка не найдена', HttpStatus.NOT_FOUND)
+        }
+        user.isActivated = true;
+        await user.save()
+    }
 }

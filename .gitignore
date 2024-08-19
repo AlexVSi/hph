@@ -159,3 +159,8 @@ dist
 .vscode
 design
 *drawio*
+
+config
+seeders
+migrations
+models
