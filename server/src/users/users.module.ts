@@ -15,7 +15,7 @@ import { BannedUser } from './banned-user.model';
   imports: [
     forwardRef(() => AuthModule),
     SequelizeModule.forFeature([User, Role, UserRole, BannedUser]),
-    RolesModule
+    RolesModule,
   ],
   exports: [UsersService]
 })

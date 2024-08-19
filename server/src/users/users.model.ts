@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { BelongsTo, BelongsToMany, Column, DataType, HasOne, Model, Table } from "sequelize-typescript";
+import { BelongsToMany, Column, DataType, HasOne, Model, Table } from "sequelize-typescript";
 import { Role } from "src/roles/roles.model";
 import { UserRole } from "src/roles/user-roles.model";
 import { BannedUser } from "./banned-user.model";
@@ -33,7 +33,7 @@ export class User extends Model<User, UserCreationAttrs> {
     @Column({ type: DataType.BOOLEAN, defaultValue: false, allowNull: false })
     isActivated: boolean;
 
-    @Column({ type: DataType.STRING, allowNull: false })
+    @Column({ type: DataType.STRING, unique: true, allowNull: false })
     activationLink: string;
 
     @BelongsToMany(() => Role, () => UserRole)

@@ -5,12 +5,15 @@ import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { JwtService } from '@nestjs/jwt';
 import * as bcryptjs from 'bcryptjs'
 import { User } from 'src/users/users.model';
+import { v4 } from 'uuid';
+import { MailService } from './mail.service';
 
 @Injectable()
 export class AuthService {
 
     constructor(private userService: UsersService,
-        private jwtService: JwtService) { }
+        private jwtService: JwtService,
+        private mailService: MailService) { }
 
     async login(userDto: LoginUserDto) {
         const user = await this.validateUser(userDto)
@@ -22,8 +25,10 @@ export class AuthService {
         if (candidate) {
             throw new HttpException('Пользователь с таким email уже существует', HttpStatus.BAD_REQUEST)
         }
+        const activationLink = v4()
         const hashPassword = await bcryptjs.hash(userDto.password, 5);
-        const user = await this.userService.createUser({ ...userDto, password: hashPassword })
+        const user = await this.userService.createUser({ ...userDto, activationLink: activationLink, password: hashPassword });
+        await this.mailService.sendActivationMail(userDto.email, `${process.env.API_URL}/api/activate${activationLink}`)
         return this.generateToken(user)
     }
 
