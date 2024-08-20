@@ -1,4 +1,4 @@
-import { Column, DataType, Model } from "sequelize-typescript";
+import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 interface OrderCreationAttrs {
     userId: string
@@ -6,23 +6,24 @@ interface OrderCreationAttrs {
     deliveryTypeId: string
 }
 
+@Table({ tableName: 'Orders' })
 export class Order extends Model<Order, OrderCreationAttrs> {
-    @Column({type: DataType.UUID, defaultValue: DataType.UUIDV4, unique: true, primaryKey: true})
+    @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4, unique: true, primaryKey: true })
     id: string;
 
     // @ForeignKey()
-    @Column({type: DataType.UUID, allowNull: false})
+    @Column({ type: DataType.UUID, allowNull: false })
     userId: string;
 
-    @Column({type: DataType.FLOAT, allowNull: false})
+    @Column({ type: DataType.FLOAT, allowNull: false })
     totalPrise: number;
 
     // @ForeignKey()
-    @Column({type: DataType.UUID, allowNull: false})
+    @Column({ type: DataType.UUID, allowNull: false })
     deliveryTypeId: string;
 
     // @ForeignKey()
-    @Column({type: DataType.UUID, allowNull: false})
+    @Column({ type: DataType.UUID, allowNull: false })
     statusId: string;
 
     // createdAt: date

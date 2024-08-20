@@ -13,6 +13,11 @@ import { JwtModule } from "@nestjs/jwt";
 import { BannedUser } from "./users/banned-user.model";
 import { ProductsModule } from './products/products.module';
 import { OrdersModule } from './orders/orders.module';
+import { CategoriesModule } from './categories/categories.module';
+import { BasketsModule } from './baskets/baskets.module';
+import { FavoritesModule } from './favorites/favorites.module';
+import { LegalsEntityUsersModule } from './legals-entity-users/legals-entity-users.module';
+import { DeliveryAddressModule } from './delivery-address/delivery-address.module';
 
 
 @Module({
@@ -37,7 +42,12 @@ import { OrdersModule } from './orders/orders.module';
         AuthModule,
         JwtModule,
         ProductsModule,
-        OrdersModule
+        OrdersModule,
+        CategoriesModule,
+        BasketsModule,
+        FavoritesModule,
+        LegalsEntityUsersModule,
+        DeliveryAddressModule
     ]
 })
 
