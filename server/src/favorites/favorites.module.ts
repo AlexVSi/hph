@@ -10,6 +10,9 @@ import { FavoriteProduct } from './favorite-products.model';
   providers: [FavoritesService],
   imports: [
     SequelizeModule.forFeature([Favorite, FavoriteProduct])
+  ],
+  exports: [
+    FavoritesService
   ]
 })
 export class FavoritesModule {}

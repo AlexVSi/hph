@@ -9,6 +9,7 @@ import { RolesModule } from 'src/roles/roles.module';
 import { AuthModule } from 'src/auth/auth.module';
 import { BannedUser } from './banned-user.model';
 import { BasketsModule } from 'src/baskets/baskets.module';
+import { FavoritesModule } from 'src/favorites/favorites.module';
 
 @Module({
   controllers: [UsersController],
@@ -17,7 +18,8 @@ import { BasketsModule } from 'src/baskets/baskets.module';
     forwardRef(() => AuthModule),
     SequelizeModule.forFeature([User, Role, UserRole, BannedUser]),
     RolesModule,
-    BasketsModule
+    BasketsModule,
+    FavoritesModule
   ],
   exports: [UsersService]
 })

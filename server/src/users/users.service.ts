@@ -7,6 +7,7 @@ import { AddRoleDto } from './dto/add-role.dto';
 import { BanUserDto } from './dto/ban-user.dto';
 import { BannedUser } from './banned-user.model';
 import { BasketsService } from 'src/baskets/baskets.service';
+import { FavoritesService } from 'src/favorites/favorites.service';
 
 @Injectable()
 export class UsersService {
@@ -14,12 +15,14 @@ export class UsersService {
     constructor(@InjectModel(User) private userRepository: typeof User,
         @InjectModel(BannedUser) private bannedUserRepository: typeof BannedUser,
         private roleService: RolesService,
-        private basketsService: BasketsService) { }
+        private basketsService: BasketsService,
+        private favoritesService: FavoritesService) { }
 
     async createUser(dto: CreateUserDto) {
         const user = await this.userRepository.create(dto);
         const role = await this.roleService.getRole("USER")
         await this.basketsService.createBasket({ userId: user.id })
+        await this.favoritesService.createFavorite({ userId: user.id })
         await user.$set('roles', [role.id])
         user.roles = [role]
         return user;
