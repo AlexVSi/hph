@@ -1,16 +1,24 @@
-import { Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
+import { FavoriteProduct } from "./favorite-products.model";
+import { User } from "src/users/users.model";
+import { Product } from "src/products/products.model";
 
 interface FavoriteCreationAttrs {
-    category: object
-    sale?: number
+    userId: string
 }
 
-@Table({ tableName: 'Favorites' })
+@Table({ tableName: 'Favorites', createdAt: false, updatedAt: false })
 export class Favorite extends Model<Favorite, FavoriteCreationAttrs> {
     @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4, unique: true, primaryKey: true })
     id: string;
 
-    // @ForeignKey()
+    @ForeignKey(() => User)
     @Column({ type: DataType.UUID, allowNull: false })
-    userId: object;
+    userId: string;
+
+    @BelongsToMany(() => Product, () => FavoriteProduct)
+    product: Product[];
+
+    @BelongsTo(() => User)
+    user: User;
 }

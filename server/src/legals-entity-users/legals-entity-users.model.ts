@@ -1,17 +1,15 @@
 import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
 import { User } from "src/users/users.model";
 
-interface DeliveryAddressCreationAttrs {
+interface LegalsEntityUserCreationAttrs {
     userId: string
-    index: string
-    city: string
-    street: string
-    houseNumber: string
-    note: string
+    fescCode: string
+    VATCode: string
+    legalAddress: string
 }
 
-@Table({ tableName: 'DeliveryAddress', createdAt: false, updatedAt: false })
-export class DeliveryAddress extends Model<DeliveryAddress, DeliveryAddressCreationAttrs> {
+@Table({ tableName: 'LegalsEntityUsers', createdAt: false, updatedAt: false })
+export class LegalsEntityUser extends Model<LegalsEntityUser, LegalsEntityUserCreationAttrs> {
     @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4, unique: true, primaryKey: true })
     id: string;
 
@@ -20,19 +18,13 @@ export class DeliveryAddress extends Model<DeliveryAddress, DeliveryAddressCreat
     userId: string;
 
     @Column({ type: DataType.STRING, allowNull: false })
-    index: string;
+    fescCode: string;
 
     @Column({ type: DataType.STRING, allowNull: false })
-    city: string;
+    VATCode: string;
 
     @Column({ type: DataType.STRING, allowNull: false })
-    street: string;
-
-    @Column({ type: DataType.STRING, allowNull: false })
-    houseNumber: string;
-
-    @Column({ type: DataType.STRING, allowNull: false })
-    note: string;
+    legalAddress: string;
 
     @BelongsTo(() => User)
     user: User;

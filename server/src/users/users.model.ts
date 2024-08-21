@@ -1,8 +1,13 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { BelongsToMany, Column, DataType, HasOne, Model, Table } from "sequelize-typescript";
+import { BelongsToMany, Column, DataType, HasMany, HasOne, Model, Table } from "sequelize-typescript";
 import { Role } from "src/roles/roles.model";
 import { UserRole } from "src/roles/user-roles.model";
 import { BannedUser } from "./banned-user.model";
+import { LegalsEntityUser } from "src/legals-entity-users/legals-entity-users.model";
+import { DeliveryAddress } from "src/delivery-address/delivery-address.model";
+import { Basket } from "src/baskets/baskets.model";
+import { Favorite } from "src/favorites/favorites.model";
+import { Order } from "src/orders/orders.model";
 
 interface UserCreationAttrs {
     email: string;
@@ -36,9 +41,24 @@ export class User extends Model<User, UserCreationAttrs> {
     @Column({ type: DataType.STRING, unique: true, allowNull: false })
     activationLink: string;
 
-    @BelongsToMany(() => Role, () => UserRole)
-    roles: Role[];
+    @HasMany(() => Order, 'userId')
+    order: Order[];
 
     @HasOne(() => BannedUser, 'userId')
     bannedUser: BannedUser;
+
+    @HasOne(() => LegalsEntityUser, 'userId')
+    legalsEntityUser: LegalsEntityUser;
+
+    @HasOne(() => Basket)
+    basket: Basket;
+
+    @HasOne(() => Favorite)
+    favorite: Favorite;
+
+    @HasOne(() => DeliveryAddress, 'userId')
+    deliveryAddress: DeliveryAddress;
+
+    @BelongsToMany(() => Role, () => UserRole)
+    roles: Role[];
 }

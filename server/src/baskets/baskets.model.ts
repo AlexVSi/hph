@@ -1,16 +1,24 @@
-import { Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
+import { BasketProduct } from "./basket-products.model";
+import { User } from "src/users/users.model";
+import { Product } from "src/products/products.model";
 
 interface BasketCreationAttrs {
-    category: object
-    sale?: number
+    userId: string
 }
 
-@Table({ tableName: 'Baskets' })
+@Table({ tableName: 'Baskets', createdAt: false, updatedAt: false })
 export class Basket extends Model<Basket, BasketCreationAttrs> {
     @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4, unique: true, primaryKey: true })
     id: string;
 
-    // @ForeignKey()
+    @ForeignKey(() => User)
     @Column({ type: DataType.UUID, allowNull: false })
-    userId: object;
+    userId: string;
+
+    @BelongsToMany(() => Product, () => BasketProduct)
+    product: Product[];
+
+    @BelongsTo(() => User)
+    user: User;
 }
