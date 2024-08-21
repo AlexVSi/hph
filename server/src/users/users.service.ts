@@ -6,29 +6,32 @@ import { RolesService } from 'src/roles/roles.service';
 import { AddRoleDto } from './dto/add-role.dto';
 import { BanUserDto } from './dto/ban-user.dto';
 import { BannedUser } from './banned-user.model';
+import { BasketsService } from 'src/baskets/baskets.service';
 
 @Injectable()
 export class UsersService {
 
     constructor(@InjectModel(User) private userRepository: typeof User,
-                @InjectModel(BannedUser) private bannedUserRepository: typeof BannedUser,
-                private roleService: RolesService) {}
+        @InjectModel(BannedUser) private bannedUserRepository: typeof BannedUser,
+        private roleService: RolesService,
+        private basketsService: BasketsService) { }
 
     async createUser(dto: CreateUserDto) {
         const user = await this.userRepository.create(dto);
         const role = await this.roleService.getRole("USER")
+        await this.basketsService.createBasket({ userId: user.id })
         await user.$set('roles', [role.id])
         user.roles = [role]
         return user;
     }
 
     async getAllUsers() {
-        const users = await this.userRepository.findAll({include: {all: true}})
+        const users = await this.userRepository.findAll({ include: { all: true } })
         return users;
     }
 
     async getUserByEmail(email: string) {
-        const user = await this.userRepository.findOne({where: {email}, include: {all: true}})
+        const user = await this.userRepository.findOne({ where: { email }, include: { all: true } })
         return user;
     }
 

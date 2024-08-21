@@ -6,7 +6,7 @@ interface ProductImgCreationAttrs {
     img: string
 }
 
-@Table({ tableName: 'ProductImgs' })
+@Table({ tableName: 'ProductImgs', createdAt: false, updatedAt: false })
 export class ProductImg extends Model<ProductImg, ProductImgCreationAttrs> {
     @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4, unique: true, primaryKey: true })
     id: string;

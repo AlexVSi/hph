@@ -10,6 +10,7 @@ import { BasketProduct } from './basket-products.model';
   controllers: [BasketsController],
   imports: [
     SequelizeModule.forFeature([Basket, BasketProduct])
-  ]
+  ],
+  exports: [BasketsService]
 })
 export class BasketsModule {}

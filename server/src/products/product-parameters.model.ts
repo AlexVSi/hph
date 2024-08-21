@@ -9,7 +9,7 @@ interface ProductParameterCreationAttrs {
 }
 
 
-@Table({ tableName: 'ProductParameters' })
+@Table({ tableName: 'ProductParameters', createdAt: false, updatedAt: false })
 export class ProductParameter extends Model<ProductParameter, ProductParameterCreationAttrs> {
     @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4, unique: true, primaryKey: true })
     id: string;
