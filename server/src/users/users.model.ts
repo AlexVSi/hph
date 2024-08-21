@@ -47,17 +47,17 @@ export class User extends Model<User, UserCreationAttrs> {
     @HasOne(() => BannedUser, 'userId')
     bannedUser: BannedUser;
 
-    @HasOne(() => LegalsEntityUser, 'userId')
-    legalsEntityUser: LegalsEntityUser;
-
-    @HasOne(() => Basket)
+    @HasOne(() => Basket, 'userId')
     basket: Basket;
 
-    @HasOne(() => Favorite)
+    @HasOne(() => Favorite, 'userId')
     favorite: Favorite;
 
     @HasOne(() => DeliveryAddress, 'userId')
     deliveryAddress: DeliveryAddress;
+
+    @HasOne(() => LegalsEntityUser, 'userId')
+    legalsEntityUser: LegalsEntityUser;
 
     @BelongsToMany(() => Role, () => UserRole)
     roles: Role[];

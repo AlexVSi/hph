@@ -8,6 +8,7 @@ import { Parameter } from "src/categories/parameters.model";
 import { Order } from "src/orders/orders.model";
 import { OrderProduct } from "src/orders/order-products.model";
 import { Category } from "src/categories/categories.model";
+import { BasketProduct } from "src/baskets/basket-products.model";
 
 interface ProductCreationAttrs {
     articleNumber: string
@@ -55,7 +56,7 @@ export class Product extends Model<Product, ProductCreationAttrs> {
     @BelongsToMany(() => Favorite, () => FavoriteProduct)
     favorite: Favorite[];
 
-    @BelongsToMany(() => Product, () => Basket)
+    @BelongsToMany(() => Basket, () => BasketProduct)
     basket: Basket[];
 
     @BelongsToMany(() => Parameter, () => ProductParameter)

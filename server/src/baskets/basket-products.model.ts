@@ -21,6 +21,6 @@ export class BasketProduct extends Model<BasketProduct, BasketProductCreationAtt
     @Column({ type: DataType.UUID, allowNull: false })
     productId: string;
 
-    @Column({ type: DataType.NUMBER, allowNull: false })
+    @Column({ type: DataType.INTEGER, allowNull: false })
     amount: number;
 }
