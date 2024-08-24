@@ -1,4 +1,4 @@
 export class BasketDto {
-    basketId: string
-    productId: string
+    readonly basketId: string
+    readonly productId: string
 }
