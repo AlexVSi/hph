@@ -14,5 +14,5 @@ export class DeliveryType extends Model<DeliveryType, DeliveryTypeCreationAttrs>
     deliverType: object;
 
     @HasMany(() => Order, 'deliveryTypeId')
-    order: Order[];
+    orders: Order[];
 }

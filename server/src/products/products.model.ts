@@ -9,6 +9,7 @@ import { Order } from "src/orders/orders.model";
 import { OrderProduct } from "src/orders/order-products.model";
 import { Category } from "src/categories/categories.model";
 import { BasketProduct } from "src/baskets/basket-products.model";
+import { MainPageProduct } from "./main-page-products.model";
 
 interface ProductCreationAttrs {
     articleNumber: string
@@ -25,7 +26,7 @@ export class Product extends Model<Product, ProductCreationAttrs> {
     @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4, unique: true, primaryKey: true })
     id: string;
 
-    @Column({ type: DataType.STRING, allowNull: false })
+    @Column({ type: DataType.STRING, allowNull: false, unique: true })
     articleNumber: string;
 
     @Column({ type: DataType.JSON, allowNull: false })
@@ -48,17 +49,20 @@ export class Product extends Model<Product, ProductCreationAttrs> {
     description: object;
 
     @HasMany(() => ProductImg, 'productId')
-    productImg: ProductImg;
+    productImgs: ProductImg[];
 
     @BelongsToMany(() => Order, () => OrderProduct)
-    order: Order[];
+    orders: Order[];
 
     @BelongsToMany(() => Favorite, () => FavoriteProduct)
-    favorite: Favorite[];
+    favorites: Favorite[];
 
     @BelongsToMany(() => Basket, () => BasketProduct)
-    basket: Basket[];
+    baskets: Basket[];
 
     @BelongsToMany(() => Parameter, () => ProductParameter)
-    parameter: Parameter[];
+    parameters: Parameter[];
+
+    @HasMany(() => MainPageProduct)
+    MainPageProducts: MainPageProduct[];
 }

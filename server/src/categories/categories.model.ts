@@ -1,4 +1,4 @@
-import { Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
+import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
 import { Parameter } from "./parameters.model";
 import { Product } from "src/products/products.model";
 
@@ -19,8 +19,8 @@ export class Category extends Model<Category, CategoryCreationAttrs> {
     sale: number;
 
     @HasMany(() => Product, 'categoryId')
-    product: Product[];
+    products: Product[];
 
     @HasMany(() => Parameter, 'categoryId')
-    parameter: Parameter[];
+    parameters: Parameter[];
 }

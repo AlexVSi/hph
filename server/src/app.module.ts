@@ -33,6 +33,7 @@ import { DeliveryType } from "./orders/delivery-types.model";
 import { Status } from "./orders/statuses.model";
 import { LegalsEntityUser } from "./legals-entity-users/legals-entity-users.model";
 import { DeliveryAddress } from "./delivery-address/delivery-address.model";
+import { MainPageProduct } from "./products/main-page-products.model";
 
 
 @Module({
@@ -68,10 +69,11 @@ import { DeliveryAddress } from "./delivery-address/delivery-address.model";
                 OrderProduct,
                 Order,
                 DeliveryType,
-                Status
+                Status,
+                MainPageProduct
             ],
             autoLoadModels: true,
-          }),
+        }),
         UsersModule,
         RolesModule,
         AuthModule,
@@ -82,10 +84,8 @@ import { DeliveryAddress } from "./delivery-address/delivery-address.model";
         BasketsModule,
         FavoritesModule,
         LegalsEntityUsersModule,
-        DeliveryAddressModule
+        DeliveryAddressModule,
     ]
 })
 
-export class AppModule {
-
-}
+export class AppModule { }

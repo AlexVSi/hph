@@ -17,7 +17,7 @@ export class Favorite extends Model<Favorite, FavoriteCreationAttrs> {
     userId: string;
 
     @BelongsToMany(() => Product, () => FavoriteProduct)
-    product: Product[];
+    products: Product[];
 
     @BelongsTo(() => User)
     user: User;

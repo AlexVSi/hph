@@ -14,5 +14,5 @@ export class Status extends Model<Status, StatusCreationAttrs> {
     status: object;
 
     @HasMany(() => Order, 'statusId')
-    order: Order[];
+    orders: Order[];
 }

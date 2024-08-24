@@ -17,7 +17,7 @@ export class Basket extends Model<Basket, BasketCreationAttrs> {
     userId: string;
 
     @BelongsToMany(() => Product, () => BasketProduct)
-    product: Product[];
+    products: Product[];
 
     @BelongsTo(() => User)
     user: User;

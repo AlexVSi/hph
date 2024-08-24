@@ -21,7 +21,7 @@ export class Parameter extends Model<Parameter, ParameterCreationAttrs> {
     parameter: object;
 
     @BelongsToMany(() => Product, () => ProductParameter)
-    product: Product[];
+    products: Product[];
 
     @BelongsTo(() => Category)
     category: Category;

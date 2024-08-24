@@ -34,7 +34,7 @@ export class Order extends Model<Order, OrderCreationAttrs> {
     // createdAt: date
 
     @BelongsToMany(() => Product, () => OrderProduct)
-    product: Product[];
+    products: Product[];
 
     @BelongsTo(() => User)
     user: User;

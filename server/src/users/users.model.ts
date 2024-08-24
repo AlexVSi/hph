@@ -42,7 +42,7 @@ export class User extends Model<User, UserCreationAttrs> {
     activationLink: string;
 
     @HasMany(() => Order, 'userId')
-    order: Order[];
+    orders: Order[];
 
     @HasOne(() => BannedUser, 'userId')
     bannedUser: BannedUser;
