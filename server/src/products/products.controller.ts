@@ -11,23 +11,23 @@ export class ProductsController {
 
     constructor(private productsService: ProductsService) { }
 
-    @Post('/create')
     @Roles('ADMIN')
-    @UseGuards(RolesGuards, UserActivatedGuard)
+    // @UseGuards(RolesGuards, UserActivatedGuard)
+    @Post('/create')
     createProduct(@Body() dto: CreateProductDto) {
         return this.productsService.createProduct(dto)
     }
 
-    @Put('/edit')
     @Roles('ADMIN')
-    @UseGuards(RolesGuards, UserActivatedGuard)
+    // @UseGuards(RolesGuards, UserActivatedGuard)
+    @Put('/edit')
     editProduct(@Body() dto: UpdateProductDto) {
         return this.productsService.editProduct(dto)
     }
 
-    @Delete('/delete')
     @Roles('ADMIN')
-    @UseGuards(RolesGuards, UserActivatedGuard)
+    // @UseGuards(RolesGuards, UserActivatedGuard)
+    @Delete('/delete')
     deleteProduct(@Body() id: string) {
         return this.productsService.deleteProduct(id)
     }

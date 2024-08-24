@@ -3,7 +3,6 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Basket } from './baskets.model';
 import { CreateBasketDto } from './dto/create-basket.dto';
 import { AddProductDto } from './dto/add-product.dto';
-import { DeleteProductDto } from './dto/delete-product.dto';
 import { ChangeAmountDto } from './dto/change-amount.dto';
 
 @Injectable()
@@ -20,7 +19,7 @@ export class BasketsService {
         return basket
     }
 
-    async deleteProduct(dto: DeleteProductDto) { }
+    async deleteProduct(id: string) { }
 
     async changeAmount(dto: ChangeAmountDto) { }
 

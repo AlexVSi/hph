@@ -1,11 +1,14 @@
-import { IsInt, IsNumber, IsObject, IsString, Min } from "class-validator"
+import { Type } from "class-transformer"
+import { IsInt, IsNumber, IsOptional, IsString, Min, ValidateNested } from "class-validator"
+import { MultilingualField } from "src/types/multilingual-field"
 
 export class CreateProductDto {
     @IsString({ message: 'Должно быть строкой' })
     readonly articleNumber: string
     
-    @IsObject()
-    readonly name: IMultilingualField
+    @ValidateNested()
+    @Type(() => MultilingualField)
+    readonly name: MultilingualField
 
     @IsString({ message: 'Должно быть строкой' })
     readonly categoryId: string
@@ -18,10 +21,12 @@ export class CreateProductDto {
     @Min(0)
     readonly price: number
 
+    @IsOptional()
     @IsNumber()
     @Min(0)
     readonly sale?: number
 
-    @IsObject()
-    readonly description: IMultilingualField
+    @ValidateNested()
+    @Type(() => MultilingualField)
+    readonly description: MultilingualField
 }

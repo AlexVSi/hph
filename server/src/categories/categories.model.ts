@@ -12,7 +12,7 @@ export class Category extends Model<Category, CategoryCreationAttrs> {
     @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4, unique: true, primaryKey: true })
     id: string;
 
-    @Column({ type: DataType.JSON, allowNull: false })
+    @Column({ type: DataType.JSON, allowNull: false, unique: true })
     category: object;
 
     @Column({ type: DataType.FLOAT, allowNull: true })

@@ -8,7 +8,7 @@ import { RolesGuards } from 'src/auth/roles.guard';
 import { AddRoleDto } from './dto/add-role.dto';
 import { BanUserDto } from './dto/ban-user.dto';
 import { Response } from 'express';
-import { UserActivatedGuard } from './user-activated.guard';
+import { UserActivatedGuard } from '../users/user-activated.guard';
 
 @Controller('users')
 export class UsersController {
