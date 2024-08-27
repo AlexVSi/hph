@@ -9,6 +9,7 @@ import { AddRoleDto } from './dto/add-role.dto';
 import { BanUserDto } from './dto/ban-user.dto';
 import { Response } from 'express';
 import { UserActivatedGuard } from '../users/user-activated.guard';
+import { GetUserRoleDto } from './dto/get-user-role.dto';
 
 @Controller('users')
 export class UsersController {
@@ -24,8 +25,8 @@ export class UsersController {
 
     @ApiOperation({ summary: 'Получить всех вользователей' })
     @ApiResponse({ status: 200, type: [User] })
-    @Roles("ADMIN")
-    @UseGuards(RolesGuards, UserActivatedGuard)
+    // @Roles("ADMIN")
+    // @UseGuards(RolesGuards, UserActivatedGuard)
     @Get()
     getAll() {
         return this.usersService.getAllUsers();
@@ -53,5 +54,10 @@ export class UsersController {
     activate(@Param() params: any, @Res() res: Response) {
         this.usersService.activate(params.activationLink)
         res.redirect(process.env.CLIENT_URL)
+    }
+
+    @Post('/get-roles')
+    getUserRoles(@Body() dto: GetUserRoleDto) {
+        return this.usersService.getUserRoles(dto)
     }
 }

@@ -24,7 +24,7 @@ export class ProductsService {
     }
 
     async getAllProduct() {
-        const products = await this.productRepository.findAll()
+        const products = await this.productRepository.findAll({ include: { all: true } })
         return products;
     }
 

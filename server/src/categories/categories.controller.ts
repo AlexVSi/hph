@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { Roles } from 'src/auth/roles-auth.decorator';
@@ -12,5 +12,10 @@ export class CategoriesController {
     @Roles('ADMIN')
     createCategory(@Body() dto: CreateCategoryDto) {
         return this.categoriesService.createCategory(dto)
+    }
+
+    @Get()
+    getAllCategories() {
+        return this.categoriesService.getAllCategories()
     }
 }

@@ -5,7 +5,7 @@ import { MultilingualField } from "src/types/multilingual-field"
 export class CreateProductDto {
     @IsString({ message: 'Должно быть строкой' })
     readonly articleNumber: string
-    
+
     @ValidateNested()
     @Type(() => MultilingualField)
     readonly name: MultilingualField

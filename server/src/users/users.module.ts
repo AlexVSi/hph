@@ -10,7 +10,6 @@ import { AuthModule } from 'src/auth/auth.module';
 import { BannedUser } from './banned-user.model';
 import { BasketsModule } from 'src/baskets/baskets.module';
 import { FavoritesModule } from 'src/favorites/favorites.module';
-import { UserActivatedGuard } from 'src/users/user-activated.guard';
 
 @Module({
   controllers: [UsersController],

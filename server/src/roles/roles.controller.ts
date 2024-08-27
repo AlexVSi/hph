@@ -15,5 +15,4 @@ export class RolesController {
     getRole(@Param('role') role: string) {
         return this.roleService.getRole(role)
     }
-
 }

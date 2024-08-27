@@ -10,7 +10,7 @@ export class RolesService {
 
     async createRole(dto: CreateRoleDto) {
         const role = await this.roleRepository.create(dto)
-        return role
+        return role;
     }
 
     async getRole(role: string) {

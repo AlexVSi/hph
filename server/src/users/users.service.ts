@@ -8,6 +8,7 @@ import { BanUserDto } from './dto/ban-user.dto';
 import { BannedUser } from './banned-user.model';
 import { BasketsService } from 'src/baskets/baskets.service';
 import { FavoritesService } from 'src/favorites/favorites.service';
+import { GetUserRoleDto } from './dto/get-user-role.dto';
 
 @Injectable()
 export class UsersService {
@@ -64,5 +65,10 @@ export class UsersService {
         }
         user.isActivated = true;
         await user.save()
+    }
+
+    async getUserRoles(dto: GetUserRoleDto) {
+        const user = await this.userRepository.findOne({ where: { email: dto.email }, include: { all: true }})
+        return user.roles
     }
 }

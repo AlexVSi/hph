@@ -11,4 +11,9 @@ export class CategoriesService {
         const category = await this.categoryRepository.create(dto)
         return category
     }
+
+    async getAllCategories() {
+        const categories = await this.categoryRepository.findAll({ include: { all: true } })
+        return categories
+    }
 }
