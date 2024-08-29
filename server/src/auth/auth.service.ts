@@ -21,9 +21,13 @@ export class AuthService {
     }
 
     async registration(userDto: CreateUserDto) {
-        const candidate = await this.userService.getUserByEmail(userDto.email);
-        if (candidate) {
+        const duplicateEmail = await this.userService.getUserByEmail(userDto.email);
+        if (duplicateEmail) {
             throw new HttpException('Пользователь с таким email уже существует', HttpStatus.BAD_REQUEST)
+        }
+        const duplicatePhoneNumber = await this.userService.getUserByPhoneNumber(userDto.phoneNumber);
+        if (duplicatePhoneNumber) {
+            throw new HttpException('Пользователь с таким номером телефона уже существует', HttpStatus.BAD_REQUEST)
         }
         const activationLink = v4()
         const hashPassword = await bcryptjs.hash(userDto.password, 5);

@@ -10,7 +10,10 @@ import { Favorite } from "src/favorites/favorites.model";
 import { Order } from "src/orders/orders.model";
 
 interface UserCreationAttrs {
+    firstname: string;
+    lastname: string;
     email: string;
+    phoneNumber: string;
     password: string;
 }
 
@@ -28,6 +31,9 @@ export class User extends Model<User, UserCreationAttrs> {
 
     @Column({ type: DataType.STRING, unique: true, allowNull: false })
     email: string;
+
+    @Column({ type: DataType.STRING, unique: true, allowNull: false })
+    phoneNumber: string;
 
     @Column({ type: DataType.STRING, allowNull: false })
     password: string;

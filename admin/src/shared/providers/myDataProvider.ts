@@ -21,7 +21,7 @@ import {
     DeleteManyParams
 } from 'react-admin';
 
-const apiUrl = "http://localhost:8000";
+const apiUrl = import.meta.env.VITE_URL;
 const httpClient = (url: string, options: any) => {
     if (!options.headers) {
         options.headers = new Headers({ 'Accept': 'application/json' });
@@ -29,9 +29,9 @@ const httpClient = (url: string, options: any) => {
     const token = localStorage.getItem('token');
     options.headers.set('Authorization', `Bearer ${token}`);
     return fetchUtils.fetchJson(url, options);
-};;
+};
 
-const myDataProvider: DataProvider = {
+export const myDataProvider: DataProvider = {
     getList: async (resource: string, params: GetListParams): Promise<GetListResult> => {
         const { page, perPage } = params.pagination!;
         const { field, order } = params.sort!;
@@ -45,7 +45,10 @@ const myDataProvider: DataProvider = {
 
         const response = await fetch(url, {
             method: 'GET',
-            mode: 'cors'
+            mode: 'cors',
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem('token')}`
+            }
         });
         const data = await response.json();
 
@@ -81,7 +84,12 @@ const myDataProvider: DataProvider = {
         // Реализация для создания нового ресурса
     },
     update: async (resource: string, params: UpdateParams): Promise<UpdateResult> => {
-        // Реализация для обновления существующего ресурса
+        const url = `${apiUrl}/${resource}/${params.id}`;
+        const { json } = await httpClient(url, {
+            method: 'PUT',
+            body: JSON.stringify(params.data),
+        })
+        return { data: json };
     },
     updateMany: async (resource: string, params: UpdateManyParams): Promise<UpdateManyResult> => {
         // Реализация для обновления нескольких ресурсов
@@ -95,5 +103,3 @@ const myDataProvider: DataProvider = {
         // Нет стандартного типа для deleteMany, используйте тип из DeleteParams
     },
 };
-
-export default myDataProvider;

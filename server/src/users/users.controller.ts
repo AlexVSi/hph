@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Res, UseGuards } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UsersService } from './users.service';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
@@ -10,23 +10,27 @@ import { BanUserDto } from './dto/ban-user.dto';
 import { Response } from 'express';
 import { UserActivatedGuard } from '../users/user-activated.guard';
 import { GetUserRoleDto } from './dto/get-user-role.dto';
+import { EditUserDto } from './dto/edit-user.dto';
+import { ChangePasswordDto } from './dto/change-password.dto';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { DeleteUserDto } from './dto/delete-user.dto';
 
 @Controller('users')
 export class UsersController {
 
     constructor(private usersService: UsersService) { }
 
-    @ApiOperation({ summary: 'Создание пользователя' })
-    @ApiResponse({ status: 200, type: User })
-    @Post()
-    create(@Body() userDto: CreateUserDto) {
-        return this.usersService.createUser(userDto);
-    }
+    // @ApiOperation({ summary: 'Создание пользователя' })
+    // @ApiResponse({ status: 200, type: User })
+    // @Post()
+    // create(@Body() userDto: CreateUserDto) {
+    //     return this.usersService.createUser(userDto);
+    // }
 
     @ApiOperation({ summary: 'Получить всех вользователей' })
     @ApiResponse({ status: 200, type: [User] })
-    // @Roles("ADMIN")
-    // @UseGuards(RolesGuards, UserActivatedGuard)
+    @Roles("ADMIN")
+    @UseGuards(RolesGuards)
     @Get()
     getAll() {
         return this.usersService.getAllUsers();
@@ -35,8 +39,8 @@ export class UsersController {
     @ApiOperation({ summary: 'Выдать ролль' })
     @ApiResponse({ status: 200 })
     @Roles("ADMIN")
-    @UseGuards(RolesGuards, UserActivatedGuard)
-    @Post('/role')
+    @UseGuards(RolesGuards)
+    @Post('/add-role')
     addRole(@Body() dto: AddRoleDto) {
         return this.usersService.addRole(dto);
     }
@@ -44,7 +48,7 @@ export class UsersController {
     @ApiOperation({ summary: 'Бан пользователя' })
     @ApiResponse({ status: 200 })
     @Roles("ADMIN")
-    @UseGuards(RolesGuards, UserActivatedGuard)
+    @UseGuards(RolesGuards)
     @Post('/ban')
     ban(@Body() dto: BanUserDto) {
         return this.usersService.ban(dto);
@@ -57,7 +61,27 @@ export class UsersController {
     }
 
     @Post('/get-roles')
+    @Roles("ADMIN")
+    @UseGuards(RolesGuards)
     getUserRoles(@Body() dto: GetUserRoleDto) {
         return this.usersService.getUserRoles(dto)
+    }
+
+    @Put('/edit')
+    @UseGuards(JwtAuthGuard)
+    editUser(@Body() dto: EditUserDto) {
+        return this.usersService.editUser(dto)
+    }
+
+    @Put('/change-password')
+    @UseGuards(JwtAuthGuard)
+    changePassword(@Body() dto: ChangePasswordDto) {
+        return this.usersService.changePassword(dto)
+    }
+
+    @Delete('delete')
+    @UseGuards(JwtAuthGuard)
+    deleteUser(@Body() dto: DeleteUserDto) {
+        return this.usersService.deleteUser(dto)
     }
 }

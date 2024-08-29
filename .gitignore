@@ -164,6 +164,3 @@ config
 seeders
 migrations
 models
-
-
-admin-test

@@ -1,11 +1,11 @@
 import { AuthProvider, HttpError } from "react-admin";
-import { adminRoleVerification } from "./adminRoleVerification";
+import { adminRoleVerification } from "../utils/adminRoleVerification";
 
 /**
  * This authProvider is only for test purposes. Don't use it in production.
  */
 
-const url = "http://localhost:8000";
+const url = import.meta.env.VITE_URL;
 
 export const myAuthProvider: AuthProvider = {
     login: async ({ username, password }: { username: string, password: string }) => {
@@ -19,9 +19,9 @@ export const myAuthProvider: AuthProvider = {
         if (response.status < 200 || response.status >= 300) {
             throw new Error(response.statusText);
         }
-        if (!(await adminRoleVerification(username))) {
-            throw new Error(response.statusText);
-        }
+        // if (!(await adminRoleVerification(username))) {
+        //     throw new Error(response.statusText);
+        // }
 
         const data = await response.json();
 
@@ -48,5 +48,3 @@ export const myAuthProvider: AuthProvider = {
         return Promise.resolve(user);
     },
 };
-
-export default myAuthProvider;

@@ -9,6 +9,10 @@ import { BannedUser } from './banned-user.model';
 import { BasketsService } from 'src/baskets/baskets.service';
 import { FavoritesService } from 'src/favorites/favorites.service';
 import { GetUserRoleDto } from './dto/get-user-role.dto';
+import { ChangePasswordDto } from './dto/change-password.dto';
+import * as bcryptjs from 'bcryptjs'
+import { EditUserDto } from './dto/edit-user.dto';
+
 
 @Injectable()
 export class UsersService {
@@ -36,6 +40,11 @@ export class UsersService {
 
     async getUserByEmail(email: string) {
         const user = await this.userRepository.findOne({ where: { email }, include: { all: true } })
+        return user;
+    }
+
+    async getUserByPhoneNumber(phoneNumber: string) {
+        const user = await this.userRepository.findOne({ where: { phoneNumber }, include: { all: true } })
         return user;
     }
 
@@ -68,7 +77,26 @@ export class UsersService {
     }
 
     async getUserRoles(dto: GetUserRoleDto) {
-        const user = await this.userRepository.findOne({ where: { email: dto.email }, include: { all: true }})
+        const user = await this.userRepository.findOne({ where: { email: dto.email }, include: { all: true } })
         return user.roles
+    }
+
+    async editUser(dto: EditUserDto) {
+        await this.userRepository.update(dto, { where: { id: dto.userId } })
+        const user = await this.userRepository.findByPk(dto.userId)
+        return user
+    }
+
+    async changePassword(dto: ChangePasswordDto) {
+        const user = await this.userRepository.findByPk(dto.userId)
+        const hashPassword = await bcryptjs.hash(dto.newPassword, 5)
+        user.password = hashPassword;
+        await user.save();
+        return user
+    }
+
+    async deleteUser(dto) {
+        const user = await this.userRepository.destroy({ where: { id: dto.userId } })
+        return user
     }
 }
