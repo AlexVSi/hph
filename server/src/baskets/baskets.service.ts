@@ -13,13 +13,13 @@ export class BasketsService {
     constructor(@InjectModel(Basket) private basketRepository: typeof Basket,
         @InjectModel(BasketProduct) private basketProductRepository: typeof BasketProduct) { }
 
-    async getBasketProducts(dto: GetBasketProductsDto) {
-        const basketProducts = await this.basketProductRepository.findAll({ where: { basketId: dto.basketId }, include: { all: true } })
-        return basketProducts
-    }
-
     async createBasket(dto: CreateBasketDto) {
         await this.basketRepository.create(dto)
+    }
+
+    async getBasketProducts(dto: GetBasketProductsDto) {
+        const basketProducts = await this.basketRepository.findByPk(dto.basketId, { include: { all: true } })
+        return basketProducts
     }
 
     async addProduct(dto: AddProductDto) {
