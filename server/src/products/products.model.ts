@@ -13,11 +13,12 @@ import { MainPageProduct } from "./main-page-products.model";
 
 interface ProductCreationAttrs {
     articleNumber: string
+    barCode?: string;
     name: object
     categoryId: string
     amount: number
     price: number
-    sale: number
+    sale?: number
     description: object
 }
 
@@ -28,6 +29,9 @@ export class Product extends Model<Product, ProductCreationAttrs> {
 
     @Column({ type: DataType.STRING, allowNull: false, unique: true })
     articleNumber: string;
+
+    @Column({ type: DataType.STRING, allowNull: true, unique: true })
+    barCode: string;
 
     @Column({ type: DataType.JSON, allowNull: false })
     name: object;
@@ -43,7 +47,7 @@ export class Product extends Model<Product, ProductCreationAttrs> {
     price: number;
 
     @Column({ type: DataType.FLOAT, allowNull: true })
-    sale: number;
+    sale?: number;
 
     @Column({ type: DataType.JSON, allowNull: false })
     description: object;

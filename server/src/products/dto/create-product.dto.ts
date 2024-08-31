@@ -6,6 +6,10 @@ export class CreateProductDto {
     @IsString({ message: 'Должно быть строкой' })
     readonly articleNumber: string
 
+    @IsOptional()
+    @IsString({ message: 'Должно быть строкой' })
+    barCode?: string
+
     @ValidateNested()
     @Type(() => MultilingualField)
     readonly name: MultilingualField

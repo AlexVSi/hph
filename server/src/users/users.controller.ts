@@ -10,7 +10,7 @@ import { BanUserDto } from './dto/ban-user.dto';
 import { Response } from 'express';
 import { UserActivatedGuard } from '../users/user-activated.guard';
 import { GetUserRoleDto } from './dto/get-user-role.dto';
-import { EditUserDto } from './dto/edit-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { ChangePasswordDto } from './dto/change-password.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { DeleteUserDto } from './dto/delete-user.dto';
@@ -67,10 +67,10 @@ export class UsersController {
         return this.usersService.getUserRoles(dto)
     }
 
-    @Put('/edit')
+    @Put('/update')
     @UseGuards(JwtAuthGuard)
-    editUser(@Body() dto: EditUserDto) {
-        return this.usersService.editUser(dto)
+    updateUser(@Body() dto: UpdateUserDto) {
+        return this.usersService.updateUser(dto)
     }
 
     @Put('/change-password')

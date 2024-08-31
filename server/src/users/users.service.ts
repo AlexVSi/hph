@@ -11,7 +11,7 @@ import { FavoritesService } from 'src/favorites/favorites.service';
 import { GetUserRoleDto } from './dto/get-user-role.dto';
 import { ChangePasswordDto } from './dto/change-password.dto';
 import * as bcryptjs from 'bcryptjs'
-import { EditUserDto } from './dto/edit-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 
 @Injectable()
@@ -81,7 +81,7 @@ export class UsersService {
         return user.roles
     }
 
-    async editUser(dto: EditUserDto) {
+    async updateUser(dto: UpdateUserDto) {
         await this.userRepository.update(dto, { where: { id: dto.userId } })
         const user = await this.userRepository.findByPk(dto.userId)
         return user

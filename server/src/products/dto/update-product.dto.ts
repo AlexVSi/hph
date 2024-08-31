@@ -1,5 +1,35 @@
+import { IsInt, IsNumber, IsOptional, IsString, Min, ValidateNested } from "class-validator";
 import { CreateProductDto } from "./create-product.dto";
+import { Type } from "class-transformer";
+import { MultilingualField } from "src/types/multilingual-field";
 
 export class UpdateProductDto extends CreateProductDto {
-    id: string
+    productId: string
+
+    @IsString({ message: 'Должно быть строкой' })
+    readonly articleNumber: string
+
+    @ValidateNested()
+    @Type(() => MultilingualField)
+    readonly name: MultilingualField
+
+    @IsString({ message: 'Должно быть строкой' })
+    readonly categoryId: string
+
+    @IsInt()
+    @Min(0)
+    readonly amount: number
+
+    @IsNumber()
+    @Min(0)
+    readonly price: number
+
+    @IsOptional()
+    @IsNumber()
+    @Min(0)
+    readonly sale?: number
+
+    @ValidateNested()
+    @Type(() => MultilingualField)
+    readonly description: MultilingualField
 }

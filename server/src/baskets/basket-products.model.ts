@@ -1,4 +1,4 @@
-import { Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
 import { Basket } from "./baskets.model";
 import { Product } from "src/products/products.model";
 
@@ -21,6 +21,6 @@ export class BasketProduct extends Model<BasketProduct, BasketProductCreationAtt
     @Column({ type: DataType.UUID, allowNull: false })
     productId: string;
 
-    @Column({ type: DataType.INTEGER, allowNull: false })
+    @Column({ type: DataType.INTEGER, allowNull: false, defaultValue: 1 })
     amount: number;
 }
