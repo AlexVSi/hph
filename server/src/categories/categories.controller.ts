@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post, Put, UseGuards } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { Roles } from 'src/auth/roles-auth.decorator';
@@ -11,26 +11,37 @@ import { SetSaleDto } from './dto/set-sale.dto';
 export class CategoriesController {
     constructor(private categoriesService: CategoriesService) { }
 
-    @Post('create')
     @Roles('ADMIN')
+    // @UseGuards(RolesGuards)
+    @Post('create')
     createCategory(@Body() dto: CreateCategoryDto) {
         return this.categoriesService.createCategory(dto)
     }
 
-    @Get()
+    // @UseGuards(RolesGuards)
+    @Get('')
     getAllCategories() {
         return this.categoriesService.getAllCategories()
     }
 
-    async updateCategory(dto: UpdateCategoryDto) {
+    @Roles('ADMIN')
+    // @UseGuards(RolesGuards)
+    @Put('/update')
+    async updateCategory(@Body() dto: UpdateCategoryDto) {
         return this.categoriesService.updateCategory(dto)
     }
 
-    async deleteCategory(dto: DeleteCategoryDto) {
+    @Roles('ADMIN')
+    // @UseGuards(RolesGuards)
+    @Delete('/delete')
+    async deleteCategory(@Body() dto: DeleteCategoryDto) {
         return this.categoriesService.deleteCategory(dto)
     }
 
-    async setSale(dto: SetSaleDto) {
+    @Roles('ADMIN')
+    // @UseGuards(RolesGuards)
+    @Post('/set-sale')
+    async setSale(@Body() dto: SetSaleDto) {
         return this.categoriesService.setSale(dto)
     }
 }

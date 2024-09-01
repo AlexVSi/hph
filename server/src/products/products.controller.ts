@@ -36,4 +36,6 @@ export class ProductsController {
     getAllProduct() {
         return this.productsService.getAllProducts()
     }
+
+    
 }

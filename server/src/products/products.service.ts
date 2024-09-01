@@ -4,6 +4,7 @@ import { Product } from './products.model';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { DeleteProductDto } from './dto/delete-product.dto';
+import { SetSaleDto } from './dto/set-sale.dto';
 
 @Injectable()
 export class ProductsService {
@@ -32,5 +33,9 @@ export class ProductsService {
     async getProductById(id: string) {
         const product = await this.productRepository.findByPk(id)
         return product;
+    }
+
+    async setSale(dto: SetSaleDto) {
+        
     }
 }
