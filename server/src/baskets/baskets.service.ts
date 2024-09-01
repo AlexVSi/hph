@@ -28,8 +28,7 @@ export class BasketsService {
     }
 
     async removeProduct(dto: RemoveProductDto) {
-        const product = await this.basketProductRepository.destroy({ where: { basketId: dto.basketId, productId: dto.productId } })
-        return product
+        await this.basketProductRepository.destroy({ where: { basketId: dto.basketId, productId: dto.productId } })
     }
 
     async changeAmountProduct(dto: ChangeAmountProductDto) {

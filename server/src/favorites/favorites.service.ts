@@ -5,7 +5,6 @@ import { Favorite } from './favorites.model';
 import { GetFavoriteProductsDto } from './dto/get-favorite-products.dto';
 import { AddProductDto } from './dto/add-product.dto';
 import { RemoveProductDto } from './dto/remove-product.dto';
-import { where } from 'sequelize';
 
 @Injectable()
 export class FavoritesService {
@@ -27,8 +26,6 @@ export class FavoritesService {
     }
 
     async removeProduct(dto: RemoveProductDto) {
-        const favorite = await this.favoriteRepository.findByPk(dto.favoriteId)
-        await favorite.$remove('products', dto.productId)
-        return favorite
+        await this.favoriteRepository.destroy({ where: { id: dto.favoriteId } })
     }
 }

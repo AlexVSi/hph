@@ -21,7 +21,7 @@ export class BasketsController {
 
     @Delete('/delete')
     removeProduct(@Body() dto: RemoveProductDto) {
-        return this.basketsServise.removeProduct(dto)
+        this.basketsServise.removeProduct(dto)
     }
 
     @Post('/change-amount')

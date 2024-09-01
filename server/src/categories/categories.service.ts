@@ -2,6 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Category } from './categories.model';
 import { CreateCategoryDto } from './dto/create-category.dto';
+import { UpdateCategoryDto } from './dto/update-category.dto';
+import { DeleteCategoryDto } from './dto/delete-category.dto';
+import { SetSaleDto } from './dto/set-sale.dto';
 
 @Injectable()
 export class CategoriesService {
@@ -15,5 +18,22 @@ export class CategoriesService {
     async getAllCategories() {
         const categories = await this.categoryRepository.findAll({ include: { all: true } })
         return categories
+    }
+
+    async updateCategory(dto: UpdateCategoryDto) {
+        const category = await this.categoryRepository.findByPk(dto.categoryId)
+        category.category = dto.category
+        await category.save()
+        return category
+    }
+
+    async deleteCategory(dto: DeleteCategoryDto) {
+        await this.categoryRepository.destroy({ where: { id: dto.categoryId } })
+    }
+
+    async setSale(dto: SetSaleDto) {
+        const category = await this.categoryRepository.findByPk(dto.categoryId)
+        category.$set('sale', dto.sale)
+        return category
     }
 }

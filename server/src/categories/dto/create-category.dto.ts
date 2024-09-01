@@ -1,5 +1,5 @@
 import { Type } from "class-transformer"
-import { IsNumber, IsOptional, IsString, Min, ValidateNested } from "class-validator"
+import { IsNumber, IsOptional, Min, ValidateNested } from "class-validator"
 import { MultilingualField } from "src/types/multilingual-field"
 
 
