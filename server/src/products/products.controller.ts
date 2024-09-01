@@ -5,6 +5,7 @@ import { Roles } from 'src/auth/roles-auth.decorator';
 import { ProductsService } from './products.service';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { DeleteProductDto } from './dto/delete-product.dto';
+import { SetSaleDto } from './dto/set-sale.dto';
 
 @Controller('products')
 export class ProductsController {
@@ -37,5 +38,8 @@ export class ProductsController {
         return this.productsService.getAllProducts()
     }
 
-    
+    @Put()
+    async setSale(dto: SetSaleDto) {
+        return this.productsService.setSale(dto)
+    }
 }

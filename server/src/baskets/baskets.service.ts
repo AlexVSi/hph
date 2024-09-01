@@ -32,7 +32,9 @@ export class BasketsService {
     }
 
     async changeAmountProduct(dto: ChangeAmountProductDto) {
-        const basketProduct = await this.basketProductRepository.update({ amount: dto.amount }, { where: { basketId: dto.basketId, productId: dto.productId } })
+        const basketProduct = await this.basketProductRepository.findOne({ where: { basketId: dto.basketId, productId: dto.productId } })
+        basketProduct.amount = dto.amount
+        basketProduct.save()
         return basketProduct
     }
 }

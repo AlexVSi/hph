@@ -33,7 +33,8 @@ export class CategoriesService {
 
     async setSale(dto: SetSaleDto) {
         const category = await this.categoryRepository.findByPk(dto.categoryId)
-        category.$set('sale', dto.sale)
+        category.sale = dto.sale
+        await category.save()
         return category
     }
 }

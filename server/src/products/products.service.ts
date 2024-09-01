@@ -36,6 +36,9 @@ export class ProductsService {
     }
 
     async setSale(dto: SetSaleDto) {
-        
+        const product = await this.productRepository.findByPk(dto.productId)
+        product.sale = dto.sale
+        await product.save()
+        return product
     }
 }

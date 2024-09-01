@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
 import { AddProductDto } from './dto/add-product.dto';
 import { BasketsService } from './baskets.service';
 import { ChangeAmountProductDto } from './dto/change-amount-product.dto';
@@ -24,7 +24,7 @@ export class BasketsController {
         this.basketsServise.removeProduct(dto)
     }
 
-    @Post('/change-amount')
+    @Put('/change-amount')
     changeAmountProduct(@Body() dto: ChangeAmountProductDto) {
         return this.basketsServise.changeAmountProduct(dto)
     }
