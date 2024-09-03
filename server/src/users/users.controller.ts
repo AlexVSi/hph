@@ -21,13 +21,6 @@ export class UsersController {
 
     constructor(private usersService: UsersService) { }
 
-    // @ApiOperation({ summary: 'Создание пользователя' })
-    // @ApiResponse({ status: 200, type: User })
-    // @Post()
-    // create(@Body() userDto: CreateUserDto) {
-    //     return this.usersService.createUser(userDto);
-    // }
-
     @ApiOperation({ summary: 'Получить всех вользователей' })
     @ApiResponse({ status: 200, type: [User] })
     @Roles("ADMIN")
@@ -58,8 +51,8 @@ export class UsersController {
     @Roles("ADMIN")
     @UseGuards(RolesGuards)
     @Post('/ban')
-    ban(@Body() dto: BanUserDto) {
-        return this.usersService.ban(dto);
+    banUser(@Body() dto: BanUserDto) {
+        return this.usersService.banUser(dto);
     }
 
     @Get('/activate/:activationLink')

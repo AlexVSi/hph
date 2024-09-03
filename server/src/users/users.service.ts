@@ -21,7 +21,6 @@ import { LegalsEntityUser } from './legals-entity-users.model';
 export class UsersService {
 
     constructor(@InjectModel(User) private userRepository: typeof User,
-        @InjectModel(BannedUser) private bannedUserRepository: typeof BannedUser,
         private roleService: RolesService,
         private basketsService: BasketsService,
         private favoritesService: FavoritesService) { }
@@ -61,9 +60,10 @@ export class UsersService {
         throw new HttpException('Пользователь или роль не найдены', HttpStatus.NOT_FOUND)
     }
 
-    async ban(dto: BanUserDto) {
-        const bannedUser = await this.bannedUserRepository.create(dto)
-        return bannedUser
+    async banUser(dto: BanUserDto) {
+        const user = await this.userRepository.findByPk(dto.userId, { include: [BannedUser] })
+        user.$create('bannedUser', dto)
+        return dto
     }
 
     async activate(activationLink: string) {
