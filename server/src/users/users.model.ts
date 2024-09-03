@@ -3,7 +3,7 @@ import { BelongsToMany, Column, DataType, HasMany, HasOne, Model, Table } from "
 import { Role } from "src/roles/roles.model";
 import { UserRole } from "src/roles/user-roles.model";
 import { BannedUser } from "./banned-user.model";
-import { LegalsEntityUser } from "src/legals-entity-users/legals-entity-users.model";
+import { LegalsEntityUser } from "src/users/legals-entity-users.model";
 import { DeliveryAddress } from "src/delivery-address/delivery-address.model";
 import { Basket } from "src/baskets/baskets.model";
 import { Favorite } from "src/favorites/favorites.model";

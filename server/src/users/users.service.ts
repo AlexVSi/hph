@@ -12,6 +12,9 @@ import { GetUserRoleDto } from './dto/get-user-role.dto';
 import { ChangePasswordDto } from './dto/change-password.dto';
 import * as bcryptjs from 'bcryptjs'
 import { UpdateUserDto } from './dto/update-user.dto';
+import { DeleteUserDto } from './dto/delete-user.dto';
+import { SetLegalsEntityDto } from './dto/set-legals-entity.dto';
+import { LegalsEntityUser } from './legals-entity-users.model';
 
 
 @Injectable()
@@ -95,8 +98,14 @@ export class UsersService {
         return user
     }
 
-    async deleteUser(dto) {
+    async deleteUser(dto: DeleteUserDto) {
         const user = await this.userRepository.destroy({ where: { id: dto.userId } })
         return user
+    }
+
+    async setLegalsEntity(dto: SetLegalsEntityDto) {
+        const user = await this.userRepository.findByPk(dto.userId, { include: [LegalsEntityUser] })
+        user.$create('legalsEntityUser', dto)
+        return dto
     }
 }

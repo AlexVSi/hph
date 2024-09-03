@@ -14,6 +14,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { ChangePasswordDto } from './dto/change-password.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { DeleteUserDto } from './dto/delete-user.dto';
+import { SetLegalsEntityDto } from './dto/set-legals-entity.dto';
 
 @Controller('users')
 export class UsersController {
@@ -34,6 +35,13 @@ export class UsersController {
     @Get()
     getAll() {
         return this.usersService.getAllUsers();
+    }
+
+    @Roles("ADMIN")
+    @UseGuards(RolesGuards)
+    @Get('/email')
+    getUserByEmail(@Body() { email }) {
+        return this.usersService.getUserByEmail(email)
     }
 
     @ApiOperation({ summary: 'Выдать ролль' })
@@ -79,9 +87,15 @@ export class UsersController {
         return this.usersService.changePassword(dto)
     }
 
-    @Delete('delete')
+    @Delete('/delete')
     @UseGuards(JwtAuthGuard)
     deleteUser(@Body() dto: DeleteUserDto) {
         return this.usersService.deleteUser(dto)
+    }
+
+    @Post('/set-legals-entity')
+    @UseGuards(JwtAuthGuard)
+    setLegalsEntity(@Body() dto: SetLegalsEntityDto) {
+        return this.usersService.setLegalsEntity(dto)
     }
 }
