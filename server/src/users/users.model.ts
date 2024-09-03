@@ -4,7 +4,7 @@ import { Role } from "src/roles/roles.model";
 import { UserRole } from "src/roles/user-roles.model";
 import { BannedUser } from "./banned-user.model";
 import { LegalsEntityUser } from "src/users/legals-entity-users.model";
-import { DeliveryAddress } from "src/delivery-address/delivery-address.model";
+import { DeliveryAddress } from "src/users/delivery-address.model";
 import { Basket } from "src/baskets/baskets.model";
 import { Favorite } from "src/favorites/favorites.model";
 import { Order } from "src/orders/orders.model";

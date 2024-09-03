@@ -27,21 +27,21 @@ export class CategoriesController {
     @Roles('ADMIN')
     // @UseGuards(RolesGuards)
     @Put('/update')
-    async updateCategory(@Body() dto: UpdateCategoryDto) {
+    updateCategory(@Body() dto: UpdateCategoryDto) {
         return this.categoriesService.updateCategory(dto)
     }
 
     @Roles('ADMIN')
     // @UseGuards(RolesGuards)
     @Delete('/delete')
-    async deleteCategory(@Body() dto: DeleteCategoryDto) {
+    deleteCategory(@Body() dto: DeleteCategoryDto) {
         return this.categoriesService.deleteCategory(dto)
     }
 
     @Roles('ADMIN')
     // @UseGuards(RolesGuards)
-    @Post('/set-sale')
-    async setSale(@Body() dto: SetSaleDto) {
+    @Put('/set-sale')
+    setSale(@Body() dto: SetSaleDto) {
         return this.categoriesService.setSale(dto)
     }
 }

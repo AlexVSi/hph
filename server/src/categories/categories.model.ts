@@ -1,5 +1,5 @@
 import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
-import { Parameter } from "./parameters.model";
+import { Parameter } from "src/parameters/parameters.model";
 import { Product } from "src/products/products.model";
 
 interface CategoryCreationAttrs {
@@ -15,8 +15,8 @@ export class Category extends Model<Category, CategoryCreationAttrs> {
     @Column({ type: DataType.JSON, allowNull: false, unique: true })
     category: object;
 
-    @Column({ type: DataType.FLOAT, allowNull: true })
-    sale: number;
+    @Column({ type: DataType.FLOAT, allowNull: true, defaultValue: 0 })
+    sale?: number;
 
     @HasMany(() => Product, 'categoryId')
     products: Product[];

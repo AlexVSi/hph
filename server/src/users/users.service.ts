@@ -15,6 +15,8 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { DeleteUserDto } from './dto/delete-user.dto';
 import { SetLegalsEntityDto } from './dto/set-legals-entity.dto';
 import { LegalsEntityUser } from './legals-entity-users.model';
+import { SetDeliveryAddressDto } from './dto/set-delivery-address.dto';
+import { DeliveryAddress } from './delivery-address.model';
 
 
 @Injectable()
@@ -101,6 +103,12 @@ export class UsersService {
     async deleteUser(dto: DeleteUserDto) {
         const user = await this.userRepository.destroy({ where: { id: dto.userId } })
         return user
+    }
+
+    async setDeliveryAddress(dto: SetDeliveryAddressDto) {
+        const user = await this.userRepository.findByPk(dto.userId, { include: [DeliveryAddress] })
+        user.$create('deliveryAddress', dto)
+        return dto
     }
 
     async setLegalsEntity(dto: SetLegalsEntityDto) {

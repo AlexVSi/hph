@@ -42,14 +42,14 @@ export class ProductsController {
     @Roles('ADMIN')
     // @UseGuards(RolesGuards)
     @Put('/set-sale')
-    async setSale(@Body() dto: SetSaleDto) {
+    setSale(@Body() dto: SetSaleDto) {
         return this.productsService.setSale(dto)
     }
 
     @Roles('ADMIN')
     // @UseGuards(RolesGuards)
     @Post('/set-parameter-value')
-    async setProductParameterValue(@Body() dto: SetParameterValueDto) {
+    setProductParameterValue(@Body() dto: SetParameterValueDto) {
         return this.productsService.setProductParameterValue(dto)
     }
 }

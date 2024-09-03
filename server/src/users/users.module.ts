@@ -11,13 +11,14 @@ import { BannedUser } from './banned-user.model';
 import { BasketsModule } from 'src/baskets/baskets.module';
 import { FavoritesModule } from 'src/favorites/favorites.module';
 import { LegalsEntityUser } from './legals-entity-users.model';
+import { DeliveryAddress } from './delivery-address.model';
 
 @Module({
   controllers: [UsersController],
   providers: [UsersService],
   imports: [
     forwardRef(() => AuthModule),
-    SequelizeModule.forFeature([User, Role, UserRole, BannedUser, LegalsEntityUser]),
+    SequelizeModule.forFeature([User, Role, UserRole, BannedUser, LegalsEntityUser, DeliveryAddress]),
     RolesModule,
     BasketsModule,
     FavoritesModule

@@ -21,7 +21,7 @@ export class FavoritesService {
 
     async addProduct(dto: AddProductDto) {
         const favorite = await this.favoriteRepository.findByPk(dto.favoriteId)
-        await favorite.$add('products', dto.productId)
+        await favorite.$add('products', [dto.productId])
         return favorite
     }
 

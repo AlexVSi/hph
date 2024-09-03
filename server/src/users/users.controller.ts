@@ -15,6 +15,7 @@ import { ChangePasswordDto } from './dto/change-password.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { DeleteUserDto } from './dto/delete-user.dto';
 import { SetLegalsEntityDto } from './dto/set-legals-entity.dto';
+import { SetDeliveryAddressDto } from './dto/set-delivery-address.dto';
 
 @Controller('users')
 export class UsersController {
@@ -61,33 +62,39 @@ export class UsersController {
         res.redirect(process.env.CLIENT_URL)
     }
 
-    @Post('/get-roles')
     @Roles("ADMIN")
     @UseGuards(RolesGuards)
+    @Post('/get-roles')
     getUserRoles(@Body() dto: GetUserRoleDto) {
         return this.usersService.getUserRoles(dto)
     }
 
-    @Put('/update')
     @UseGuards(JwtAuthGuard)
+    @Put('/update')
     updateUser(@Body() dto: UpdateUserDto) {
         return this.usersService.updateUser(dto)
     }
 
-    @Put('/change-password')
     @UseGuards(JwtAuthGuard)
+    @Put('/change-password')
     changePassword(@Body() dto: ChangePasswordDto) {
         return this.usersService.changePassword(dto)
     }
 
-    @Delete('/delete')
     @UseGuards(JwtAuthGuard)
+    @Delete('/delete')
     deleteUser(@Body() dto: DeleteUserDto) {
         return this.usersService.deleteUser(dto)
     }
 
-    @Post('/set-legals-entity')
     @UseGuards(JwtAuthGuard)
+    @Post('/set-delivery-address')
+    setDeliveryAddress(dto: SetDeliveryAddressDto) {
+        return this.usersService.setDeliveryAddress(dto)
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @Post('/set-legals-entity')
     setLegalsEntity(@Body() dto: SetLegalsEntityDto) {
         return this.usersService.setLegalsEntity(dto)
     }

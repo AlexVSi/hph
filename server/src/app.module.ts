@@ -16,11 +16,10 @@ import { OrdersModule } from './orders/orders.module';
 import { CategoriesModule } from './categories/categories.module';
 import { BasketsModule } from './baskets/baskets.module';
 import { FavoritesModule } from './favorites/favorites.module';
-import { LegalsEntityUsersModule } from './legals-entity-users/legals-entity-users.module';
 import { DeliveryAddressModule } from './delivery-address/delivery-address.module';
-import { Parameter } from "./categories/parameters.model";
+import { Parameter } from "./parameters/parameters.model";
 import { Category } from "./categories/categories.model";
-import { ProductParameter } from "./products/product-parameters.model";
+import { ProductParameter } from "./parameters/product-parameters.model";
 import { ProductImg } from "./products/product-imgs.model";
 import { Product } from "./products/products.model";
 import { FavoriteProduct } from "./favorites/favorite-products.model";
@@ -31,9 +30,10 @@ import { OrderProduct } from "./orders/order-products.model";
 import { Order } from "./orders/orders.model";
 import { DeliveryType } from "./orders/delivery-types.model";
 import { Status } from "./orders/statuses.model";
-import { LegalsEntityUser } from "./legals-entity-users/legals-entity-users.model";
-import { DeliveryAddress } from "./delivery-address/delivery-address.model";
+import { LegalsEntityUser } from "./users/legals-entity-users.model";
+import { DeliveryAddress } from "./users/delivery-address.model";
 import { MainPageProduct } from "./products/main-page-products.model";
+import { ParametersModule } from './parameters/parameters.module';
 
 
 @Module({
@@ -83,8 +83,8 @@ import { MainPageProduct } from "./products/main-page-products.model";
         CategoriesModule,
         BasketsModule,
         FavoritesModule,
-        LegalsEntityUsersModule,
         DeliveryAddressModule,
+        ParametersModule,
     ]
 })
 

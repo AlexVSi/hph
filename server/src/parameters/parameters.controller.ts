@@ -19,21 +19,21 @@ export class ParametersController {
     @Roles('ADMIN')
     // @UseGuards(RolesGuards)
     @Post('/create')
-    async createParameter(@Body() dto: CreateParameterDto) {
+    createParameter(@Body() dto: CreateParameterDto) {
         return this.parametersService.createParameter(dto)
     }
 
     @Roles('ADMIN')
     // @UseGuards(RolesGuards)
     @Put('/update')
-    async updateParameter(@Body() dto: UpdateParameterDto) {
+    updateParameter(@Body() dto: UpdateParameterDto) {
         return this.parametersService.updateParameter(dto)
     }
 
     @Roles('ADMIN')
     // @UseGuards(RolesGuards)
     @Delete('/delete')
-    async deleteParameter(@Body() dto: DeleteParameterDto) {
+    deleteParameter(@Body() dto: DeleteParameterDto) {
         return this.parametersService.deleteParameter(dto)
     }
 }
