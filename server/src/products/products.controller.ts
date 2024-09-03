@@ -6,6 +6,7 @@ import { ProductsService } from './products.service';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { DeleteProductDto } from './dto/delete-product.dto';
 import { SetSaleDto } from './dto/set-sale.dto';
+import { SetParameterValueDto } from './dto/set-parameter-value.dto';
 
 @Controller('products')
 export class ProductsController {
@@ -38,8 +39,17 @@ export class ProductsController {
         return this.productsService.getAllProducts()
     }
 
-    @Put()
-    async setSale(dto: SetSaleDto) {
+    @Roles('ADMIN')
+    // @UseGuards(RolesGuards)
+    @Put('/set-sale')
+    async setSale(@Body() dto: SetSaleDto) {
         return this.productsService.setSale(dto)
+    }
+
+    @Roles('ADMIN')
+    // @UseGuards(RolesGuards)
+    @Post('/set-parameter-value')
+    async setProductParameterValue(@Body() dto: SetParameterValueDto) {
+        return this.productsService.setProductParameterValue(dto)
     }
 }

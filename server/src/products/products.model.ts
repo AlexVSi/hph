@@ -1,10 +1,10 @@
 import { BelongsToMany, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
 import { ProductImg } from "./product-imgs.model";
-import { ProductParameter } from "./product-parameters.model";
+import { ProductParameter } from "../parameters/product-parameters.model";
 import { Favorite } from "src/favorites/favorites.model";
 import { FavoriteProduct } from "src/favorites/favorite-products.model";
 import { Basket } from "src/baskets/baskets.model";
-import { Parameter } from "src/categories/parameters.model";
+import { Parameter } from "src/parameters/parameters.model";
 import { Order } from "src/orders/orders.model";
 import { OrderProduct } from "src/orders/order-products.model";
 import { Category } from "src/categories/categories.model";
@@ -31,7 +31,7 @@ export class Product extends Model<Product, ProductCreationAttrs> {
     articleNumber: string;
 
     @Column({ type: DataType.STRING, allowNull: true, unique: true })
-    barCode: string;
+    barCode?: string;
 
     @Column({ type: DataType.JSON, allowNull: false })
     name: object;
@@ -46,7 +46,7 @@ export class Product extends Model<Product, ProductCreationAttrs> {
     @Column({ type: DataType.FLOAT, allowNull: false })
     price: number;
 
-    @Column({ type: DataType.FLOAT, allowNull: true })
+    @Column({ type: DataType.FLOAT, allowNull: true, defaultValue: 0 })
     sale?: number;
 
     @Column({ type: DataType.JSON, allowNull: false })
