@@ -23,12 +23,14 @@ export class BasketsService {
     }
 
     async addProduct(dto: AddProductDto) {
-        const basketProduct = await this.basketProductRepository.create(dto)
-        return basketProduct
+        const basket = await this.basketRepository.findByPk(dto.basketId)
+        await basket.$add('products', [dto.productId], { through: { amount: dto.amount } })
+        return basket.products
     }
 
     async removeProduct(dto: RemoveProductDto) {
-        await this.basketProductRepository.destroy({ where: { basketId: dto.basketId, productId: dto.productId } })
+        const basket = await this.basketRepository.findByPk(dto.basketId)
+        await basket.$remove('products', [dto.productId])
     }
 
     async changeAmountProduct(dto: ChangeAmountProductDto) {
