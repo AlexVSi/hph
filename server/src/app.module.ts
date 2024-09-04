@@ -16,7 +16,6 @@ import { OrdersModule } from './orders/orders.module';
 import { CategoriesModule } from './categories/categories.module';
 import { BasketsModule } from './baskets/baskets.module';
 import { FavoritesModule } from './favorites/favorites.module';
-import { DeliveryAddressModule } from './delivery-address/delivery-address.module';
 import { Parameter } from "./parameters/parameters.model";
 import { Category } from "./categories/categories.model";
 import { ProductParameter } from "./parameters/product-parameters.model";
@@ -83,7 +82,6 @@ import { ParametersModule } from './parameters/parameters.module';
         CategoriesModule,
         BasketsModule,
         FavoritesModule,
-        DeliveryAddressModule,
         ParametersModule,
     ]
 })

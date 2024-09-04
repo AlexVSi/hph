@@ -13,6 +13,8 @@ import { UserEdit } from "../entities/user/UserEdit";
 import { UserCreate } from "../entities/user/UserCreate";
 import { ProductList } from "../entities/product/ProductList";
 import { CategoryList } from "../entities/category/CategoryList";
+import { ProductEdit } from "../entities/product/ProductEdit";
+import { ProductShow } from "../entities/product/ProductShow";
 
 export const App = () => (
   <Admin
@@ -21,7 +23,7 @@ export const App = () => (
     authProvider={myAuthProvider}
   >
     <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} />
-    <Resource name="products" list={ProductList} />
+    <Resource name="products" list={ProductList} edit={ProductEdit} show={ProductShow}/>
     <Resource name="categories" list={CategoryList} />
     <Resource name="orders" list={CategoryList} />
   </Admin>

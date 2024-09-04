@@ -84,7 +84,7 @@ export const myDataProvider: DataProvider = {
         // Реализация для создания нового ресурса
     },
     update: async (resource: string, params: UpdateParams): Promise<UpdateResult> => {
-        const url = `${apiUrl}/${resource}/${params.id}`;
+        const url = `${apiUrl}/${resource}/update`;
         const { json } = await httpClient(url, {
             method: 'PUT',
             body: JSON.stringify(params.data),

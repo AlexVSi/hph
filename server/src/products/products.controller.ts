@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { RolesGuards } from 'src/auth/roles.guard';
 import { Roles } from 'src/auth/roles-auth.decorator';
@@ -7,6 +7,7 @@ import { UpdateProductDto } from './dto/update-product.dto';
 import { DeleteProductDto } from './dto/delete-product.dto';
 import { SetSaleDto } from './dto/set-sale.dto';
 import { SetParameterValueDto } from './dto/set-parameter-value.dto';
+import { GetProductByIdDto } from './dto/get-product-by-id.dto';
 
 @Controller('products')
 export class ProductsController {
@@ -23,7 +24,7 @@ export class ProductsController {
     @Roles('ADMIN')
     // @UseGuards(RolesGuards)
     @Put('/update')
-    editProduct(@Body() dto: UpdateProductDto) {
+    updateProduct(@Body() dto: UpdateProductDto) {
         return this.productsService.updateProduct(dto)
     }
 
@@ -37,6 +38,11 @@ export class ProductsController {
     @Get('')
     getAllProduct() {
         return this.productsService.getAllProducts()
+    }
+
+    @Get('/:id')
+    getProductById(@Param('id') id: string) {
+        return this.productsService.getProductById(id)
     }
 
     @Roles('ADMIN')

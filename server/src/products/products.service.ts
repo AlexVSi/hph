@@ -9,6 +9,7 @@ import { SetParameterValueDto } from './dto/set-parameter-value.dto';
 import { ParametersService } from 'src/parameters/parameters.service';
 import { ProductImg } from './product-imgs.model';
 import { Parameter } from 'src/parameters/parameters.model';
+import { GetProductByIdDto } from './dto/get-product-by-id.dto';
 
 @Injectable()
 export class ProductsService {
