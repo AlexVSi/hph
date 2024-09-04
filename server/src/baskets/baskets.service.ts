@@ -7,6 +7,7 @@ import { ChangeAmountProductDto } from './dto/change-amount-product.dto';
 import { RemoveProductDto } from './dto/remove-product.dto';
 import { BasketProduct } from './basket-products.model';
 import { GetBasketProductsDto } from './dto/get-basket-products.dto';
+import { Product } from 'src/products/products.model';
 
 @Injectable()
 export class BasketsService {
@@ -17,9 +18,9 @@ export class BasketsService {
         await this.basketRepository.create(dto)
     }
 
-    async getBasketProducts(dto: GetBasketProductsDto) {
-        const basketProducts = await this.basketRepository.findByPk(dto.basketId, { include: { all: true } })
-        return basketProducts
+    async getBasket(dto: GetBasketProductsDto) {
+        const basket = await this.basketRepository.findAll({ where: { userId: dto.userId }, include: [Product] })
+        return basket
     }
 
     async addProduct(dto: AddProductDto) {

@@ -10,8 +10,8 @@ export class BasketsController {
     constructor(private basketsServise: BasketsService) { }
 
     @Get('')
-    getBasketProducts(@Body() dto: GetBasketProductsDto) {
-        return this.basketsServise.getBasketProducts(dto)
+    getBasket(@Body() dto: GetBasketProductsDto) {
+        return this.basketsServise.getBasket(dto)
     }
 
     @Post('/add-product')

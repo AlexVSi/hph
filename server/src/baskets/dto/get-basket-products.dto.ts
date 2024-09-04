@@ -1,3 +1,3 @@
 export class GetBasketProductsDto {
-    readonly basketId: string
+    readonly userId: string
 }
