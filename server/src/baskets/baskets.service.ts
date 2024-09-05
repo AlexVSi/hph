@@ -19,8 +19,8 @@ export class BasketsService {
     }
 
     async getBasket(dto: GetBasketProductsDto) {
-        const basket = await this.basketRepository.findAll({ where: { userId: dto.userId }, include: [Product] })
-        return basket
+        const basket: Basket[] = await this.basketRepository.findAll({ where: { userId: dto.userId }, include: [Product] })
+        return basket['products']
     }
 
     async addProduct(dto: AddProductDto) {
