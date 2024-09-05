@@ -28,4 +28,9 @@ export class StatusesService {
     async deleteStatus(dto: DeleteStatusDto) {
         await this.statusRepository.destroy({ where: { id: dto.statusId } })
     }
+
+    async getStatus(status: string) {
+        const statusId = await this.statusRepository.findOne({ where: { status: status } })
+        return statusId.id
+    }
 }
