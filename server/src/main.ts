@@ -19,7 +19,7 @@ async function start() {
 
     app.use(cors())
 
-    // app.useGlobalPipes(new ValidationPipe())
+    app.useGlobalPipes(new ValidationPipe())
 
     await app.listen(PORT, () => console.log(`Server start on port ${PORT}`))
 }

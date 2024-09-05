@@ -10,7 +10,7 @@ import { AuthController } from './auth/auth.controller';
 import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
 import { JwtModule } from "@nestjs/jwt";
-import { BannedUser } from "./users/banned-user.model";
+import { BannedUser } from "./banned-users/banned-user.model";
 import { ProductsModule } from './products/products.module';
 import { OrdersModule } from './orders/orders.module';
 import { CategoriesModule } from './categories/categories.module';
@@ -27,12 +27,17 @@ import { BasketProduct } from "./baskets/basket-products.model";
 import { Basket } from "./baskets/baskets.model";
 import { OrderProduct } from "./orders/order-products.model";
 import { Order } from "./orders/orders.model";
-import { DeliveryType } from "./orders/delivery-types.model";
-import { Status } from "./orders/statuses.model";
+import { DeliveryType } from "./delivery-types/delivery-types.model";
+import { Status } from "./statuses/statuses.model";
 import { LegalsEntityUser } from "./users/legals-entity-users.model";
-import { DeliveryAddress } from "./users/delivery-address.model";
+import { DeliveryAddress } from "./users/delivery-addresses.model";
 import { MainPageProduct } from "./products/main-page-products.model";
 import { ParametersModule } from './parameters/parameters.module';
+import { LegalsEntityUsersModule } from './legals-entity-users/legals-entity-users.module';
+import { DeliveryAddressesModule } from './delivery-addresses/delivery-addresses.module';
+import { BannedUsersModule } from './banned-users/banned-users.module';
+import { DeliveryTypesModule } from './delivery-types/delivery-types.module';
+import { StatusesModule } from './statuses/statuses.module';
 
 
 @Module({
@@ -83,6 +88,11 @@ import { ParametersModule } from './parameters/parameters.module';
         BasketsModule,
         FavoritesModule,
         ParametersModule,
+        LegalsEntityUsersModule,
+        DeliveryAddressesModule,
+        BannedUsersModule,
+        DeliveryTypesModule,
+        StatusesModule,
     ]
 })
 
