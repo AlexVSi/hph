@@ -1,7 +1,7 @@
 import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
 import { OrderProduct } from "./order-products.model";
-import { DeliveryType } from "./delivery-types.model";
-import { Status } from "./statuses.model";
+import { DeliveryType } from "src/delivery-types/delivery-types.model";
+import { Status } from "src/statuses/statuses.model";
 import { User } from "src/users/users.model";
 import { Product } from "src/products/products.model";
 
@@ -9,6 +9,7 @@ interface OrderCreationAttrs {
     userId: string
     totalPrise: number
     deliveryTypeId: string
+    statusId: string
 }
 
 @Table({ tableName: 'Orders' })
