@@ -19,18 +19,18 @@ export class BasketsService {
     }
 
     async getBasket(dto: GetBasketProductsDto) {
-        const basket: Basket[] = await this.basketRepository.findAll({ where: { userId: dto.userId }, include: [Product] })
-        return basket['products']
+        const basket: Basket = await this.basketRepository.findOne({ where: { userId: dto.userId }, include: [Product] })
+        return basket
     }
 
     async addProduct(dto: AddProductDto) {
-        const basket = await this.basketRepository.findByPk(dto.basketId)
+        const basket = await this.basketRepository.findOne({ where: { userId: dto.userId }, include: [Product] })
         await basket.$add('products', [dto.productId], { through: { amount: dto.amount } })
-        return basket.products
+        return basket
     }
 
     async removeProduct(dto: RemoveProductDto) {
-        const basket = await this.basketRepository.findByPk(dto.basketId)
+        const basket = await this.basketRepository.findOne({ where: { userId: dto.userId }, include: [Product] })
         await basket.$remove('products', [dto.productId])
     }
 

@@ -1,5 +1,5 @@
 export class AddProductDto {
-    readonly basketId: string
+    readonly userId: string
     readonly productId: string
     readonly amount: number
 }
