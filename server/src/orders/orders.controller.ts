@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { Roles } from 'src/auth/roles-auth.decorator';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
@@ -12,7 +12,7 @@ export class OrdersController {
     constructor(private ordersService: OrdersService) { }
 
     @Get('')
-    getOrders(dto: GetOrdersDto) {
+    getOrders(@Body() dto: GetOrdersDto) {
         return this.ordersService.getOrders(dto)
     }
 
@@ -23,17 +23,20 @@ export class OrdersController {
         return this.ordersService.getAllOrders()
     }
 
-    createOrder(dto: CreateOrderDto) {
+    @Post('/create')
+    createOrder(@Body() dto: CreateOrderDto) {
+        console.log(dto);
         return this.ordersService.createOrder(dto)
     }
 
     @Roles('Admin')
     // @UseGuards(JwtAuthGuard)
-    setStatus(dto: SetStatusDto) {
+    setStatus(@Body() dto: SetStatusDto) {
         return this.ordersService.setStatus(dto)
     }
 
-    cancelOrder(dto: CancleOrderDto) {
+    @Post('/cancel-order')
+    cancelOrder(@Body() dto: CancleOrderDto) {
         return this.ordersService.cancelOrder(dto)
     }
 }

@@ -9,6 +9,7 @@ import { StatusesService } from 'src/statuses/statuses.service';
 import { Product } from 'src/products/products.model';
 import { SetStatusDto } from './dto/set-status.dto';
 import { CancleOrderDto } from './dto/cancle-order.dto';
+import { Basket } from 'src/baskets/baskets.model';
 
 @Injectable()
 export class OrdersService {
@@ -27,7 +28,8 @@ export class OrdersService {
     }
 
     async createOrder(dto: CreateOrderDto) {
-        const products: Product[] = await this.basketsService.getBasket({userId: dto.userId})
+        const basket: Basket = await this.basketsService.getBasket({userId: dto.userId})
+        const products: Product[] = basket.products
         const totalPrice = this.calcTotalPrice(products)
         const statusId = await this.statusesService.getStatus('CREATE')
         const order = await this.orderRepository.create({...dto, totalPrise: totalPrice, statusId: statusId})
