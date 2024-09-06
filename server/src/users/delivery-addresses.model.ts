@@ -10,7 +10,7 @@ interface DeliveryAddressCreationAttrs {
     note: string
 }
 
-@Table({ tableName: 'DeliveryAddress', createdAt: false, updatedAt: false })
+@Table({ tableName: 'DeliveryAddresses', createdAt: false, updatedAt: false })
 export class DeliveryAddress extends Model<DeliveryAddress, DeliveryAddressCreationAttrs> {
     @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4, unique: true, primaryKey: true })
     id: string;

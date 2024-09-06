@@ -5,7 +5,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { RolesService } from 'src/roles/roles.service';
 import { AddRoleDto } from './dto/add-role.dto';
 import { BanUserDto } from './dto/ban-user.dto';
-import { BannedUser } from './banned-user.model';
+import { BannedUser } from 'src/banned-users/banned-user.model';
 import { BasketsService } from 'src/baskets/baskets.service';
 import { FavoritesService } from 'src/favorites/favorites.service';
 import { GetUserRoleDto } from './dto/get-user-role.dto';
@@ -16,7 +16,7 @@ import { DeleteUserDto } from './dto/delete-user.dto';
 import { SetLegalsEntityDto } from './dto/set-legals-entity.dto';
 import { LegalsEntityUser } from './legals-entity-users.model';
 import { SetDeliveryAddressDto } from './dto/set-delivery-address.dto';
-import { DeliveryAddress } from './delivery-address.model';
+import { DeliveryAddress } from './delivery-addresses.model';
 
 
 @Injectable()

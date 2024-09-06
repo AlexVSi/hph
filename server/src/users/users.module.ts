@@ -7,11 +7,11 @@ import { Role } from 'src/roles/roles.model';
 import { UserRole } from 'src/roles/user-roles.model';
 import { RolesModule } from 'src/roles/roles.module';
 import { AuthModule } from 'src/auth/auth.module';
-import { BannedUser } from './banned-user.model';
+import { BannedUser } from 'src/banned-users/banned-user.model';
 import { BasketsModule } from 'src/baskets/baskets.module';
 import { FavoritesModule } from 'src/favorites/favorites.module';
 import { LegalsEntityUser } from './legals-entity-users.model';
-import { DeliveryAddress } from './delivery-address.model';
+import { DeliveryAddress } from './delivery-addresses.model';
 
 @Module({
   controllers: [UsersController],
