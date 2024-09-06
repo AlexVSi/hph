@@ -9,6 +9,9 @@ import { DeliveryType } from './delivery-types.model';
   controllers: [DeliveryTypesController],
   imports: [
     SequelizeModule.forFeature([DeliveryType])
+  ],
+  exports: [
+    DeliveryTypesService
   ]
 })
 export class DeliveryTypesModule {}
