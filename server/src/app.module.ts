@@ -35,6 +35,7 @@ import { MainPageProduct } from "./products/main-page-products.model";
 import { ParametersModule } from './parameters/parameters.module';
 import { DeliveryTypesModule } from './delivery-types/delivery-types.module';
 import { StatusesModule } from './statuses/statuses.module';
+import { LanguagesModule } from './languages/languages.module';
 
 
 @Module({
@@ -87,6 +88,7 @@ import { StatusesModule } from './statuses/statuses.module';
         ParametersModule,
         DeliveryTypesModule,
         StatusesModule,
+        LanguagesModule,
     ]
 })
 
