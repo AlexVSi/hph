@@ -5,7 +5,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { RolesService } from 'src/roles/roles.service';
 import { AddRoleDto } from './dto/add-role.dto';
 import { BanUserDto } from './dto/ban-user.dto';
-import { BannedUser } from 'src/banned-users/banned-user.model';
+import { BannedUser } from './banned-user.model';
 import { BasketsService } from 'src/baskets/baskets.service';
 import { FavoritesService } from 'src/favorites/favorites.service';
 import { GetUserRoleDto } from './dto/get-user-role.dto';

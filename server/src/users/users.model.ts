@@ -2,7 +2,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { BelongsToMany, Column, DataType, HasMany, HasOne, Model, Table } from "sequelize-typescript";
 import { Role } from "src/roles/roles.model";
 import { UserRole } from "src/roles/user-roles.model";
-import { BannedUser } from "src/banned-users/banned-user.model"; 
+import { BannedUser } from "./banned-user.model";
 import { LegalsEntityUser } from "src/users/legals-entity-users.model";
 import { DeliveryAddress } from "src/users/delivery-addresses.model";
 import { Basket } from "src/baskets/baskets.model";
