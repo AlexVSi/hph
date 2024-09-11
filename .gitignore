@@ -160,7 +160,4 @@ dist
 design
 *drawio*
 
-config
-seeders
-migrations
-models
+database
