@@ -1,5 +1,4 @@
-import { Model } from "sequelize";
-import { Column, DataType, Table } from "sequelize-typescript";
+import { Model, Column, DataType, Table } from "sequelize-typescript";
 
 interface LanguageCreationAttrs {
     language: string
