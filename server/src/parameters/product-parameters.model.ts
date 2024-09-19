@@ -1,11 +1,12 @@
-import { Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { Column, DataType, ForeignKey, HasOne, Model, Table } from "sequelize-typescript";
 import { Product } from "../products/products.model";
 import { Parameter } from "src/parameters/parameters.model";
+import { NumericProductParameter } from "./numeric-product-parameters.model";
 
 interface ProductParameterCreationAttrs {
     productId: string
     parameterId: string
-    value: object
+    value: string
 }
 
 @Table({ tableName: 'ProductParameters', createdAt: false, updatedAt: false })
@@ -22,5 +23,8 @@ export class ProductParameter extends Model<ProductParameter, ProductParameterCr
     parameterId: string;
 
     @Column({ type: DataType.JSON, allowNull: false })
-    value: object;
+    value: string;
+
+    @HasOne(() => NumericProductParameter)
+    numericProductParameter: NumericProductParameter;
 }

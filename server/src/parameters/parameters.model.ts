@@ -1,7 +1,8 @@
-import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
 import { Category } from "src/categories/categories.model";
 import { Product } from "src/products/products.model";
 import { ProductParameter } from "./product-parameters.model";
+import { ParameterTranslate } from "./parameters-translate.model";
 
 interface ParameterCreationAttrs {
     categoryId: string
@@ -22,6 +23,9 @@ export class Parameter extends Model<Parameter, ParameterCreationAttrs> {
 
     @BelongsToMany(() => Product, () => ProductParameter)
     products: Product[];
+
+    @HasMany(() => ParameterTranslate)
+    parameterTranslate: ParameterTranslate[];
 
     @BelongsTo(() => Category)
     category: Category;

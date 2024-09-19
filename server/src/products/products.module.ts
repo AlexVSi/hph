@@ -6,13 +6,13 @@ import { Product } from './products.model';
 import { ProductImg } from './product-imgs.model';
 import { MainPageProduct } from './main-page-products.model';
 import { ParametersModule } from 'src/parameters/parameters.module';
+import { ProductTranslate } from './product-translate.model';
 
 @Module({
   providers: [ProductsService],
   controllers: [ProductsController],
   imports: [
-    SequelizeModule.forFeature([Product, ProductImg, MainPageProduct]),
-    ParametersModule
+    SequelizeModule.forFeature([Product, ProductTranslate, ProductImg, MainPageProduct]),
   ]
 })
 export class ProductsModule { }

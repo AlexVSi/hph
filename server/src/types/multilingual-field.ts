@@ -2,11 +2,8 @@ import { IsString } from "class-validator"
 
 export class MultilingualField {
     @IsString()
-    ru: string;
+    languageId: string
 
     @IsString()
-    ro: string;
-
-    @IsString()
-    en: string;
+    translanion: string
 }

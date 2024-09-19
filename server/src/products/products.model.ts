@@ -10,16 +10,15 @@ import { OrderProduct } from "src/orders/order-products.model";
 import { Category } from "src/categories/categories.model";
 import { BasketProduct } from "src/baskets/basket-products.model";
 import { MainPageProduct } from "./main-page-products.model";
+import { ProductTranslate } from "./product-translate.model";
 
 interface ProductCreationAttrs {
     articleNumber: string
     barCode?: string;
-    name: object
     categoryId: string
     amount: number
     price: number
     sale?: number
-    description: object
 }
 
 @Table({ tableName: 'Products' })
@@ -33,9 +32,6 @@ export class Product extends Model<Product, ProductCreationAttrs> {
     @Column({ type: DataType.STRING, allowNull: true, unique: true })
     barCode?: string;
 
-    @Column({ type: DataType.JSON, allowNull: false })
-    name: object;
-
     @ForeignKey(() => Category)
     @Column({ type: DataType.UUID, allowNull: false })
     categoryId: string;
@@ -48,9 +44,6 @@ export class Product extends Model<Product, ProductCreationAttrs> {
 
     @Column({ type: DataType.FLOAT, allowNull: true, defaultValue: 0 })
     sale?: number;
-
-    @Column({ type: DataType.JSON, allowNull: false })
-    description: object;
 
     @HasMany(() => ProductImg, 'productId')
     productImgs: ProductImg[];
@@ -68,5 +61,8 @@ export class Product extends Model<Product, ProductCreationAttrs> {
     parameters: Parameter[];
 
     @HasMany(() => MainPageProduct)
-    MainPageProducts: MainPageProduct[];
+    mainPageProducts: MainPageProduct[];
+
+    @HasMany(() => ProductTranslate)
+    productTranslate: ProductTranslate[];
 }

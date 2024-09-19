@@ -36,6 +36,13 @@ import { ParametersModule } from './parameters/parameters.module';
 import { DeliveryTypesModule } from './delivery-types/delivery-types.module';
 import { StatusesModule } from './statuses/statuses.module';
 import { LanguagesModule } from './languages/languages.module';
+import { Language } from "./languages/languages.model";
+import { ProductTranslate } from "./products/product-translate.model";
+import { ParameterTranslate } from "./parameters/parameters-translate.model";
+import { NumericProductParameter } from "./parameters/numeric-product-parameters.model";
+import { ProductParametersTranslate } from "./parameters/product-parameters-translate.model";
+import { CategoriesTranslate } from "./categories/categories-translate.model";
+import { UsersssModule } from './usersss/usersss.module';
 
 
 @Module({
@@ -72,7 +79,13 @@ import { LanguagesModule } from './languages/languages.module';
                 Order,
                 DeliveryType,
                 Status,
-                MainPageProduct
+                MainPageProduct,
+                Language,
+                ProductTranslate,
+                ParameterTranslate,
+                NumericProductParameter,
+                ProductParametersTranslate,
+                CategoriesTranslate
             ],
             autoLoadModels: true,
         }),
@@ -89,6 +102,7 @@ import { LanguagesModule } from './languages/languages.module';
         DeliveryTypesModule,
         StatusesModule,
         LanguagesModule,
+        UsersssModule,
     ]
 })
 

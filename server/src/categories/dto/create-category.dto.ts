@@ -1,15 +1,15 @@
 import { Type } from "class-transformer"
-import { IsNumber, IsOptional, Min, ValidateNested } from "class-validator"
+import { IsArray, IsNumber, IsOptional, Min, ValidateNested } from "class-validator"
 import { MultilingualField } from "src/types/multilingual-field"
 
-
 export class CreateCategoryDto {
-    @ValidateNested()
+    @IsArray()
+    @ValidateNested({ each: true })
     @Type(() => MultilingualField)
-    category: MultilingualField;
+    readonly categoryT: MultilingualField[]
 
     @IsOptional()
     @IsNumber()
     @Min(0)
-    sale?: number;
+    readonly sale?: number;
 }

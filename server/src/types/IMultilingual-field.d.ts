@@ -1,5 +1,4 @@
-interface IMultolangField {
-    ru: string;
-    ro: string;
-    en: string;
+interface IMultilangField {
+    languageId: string
+    translanion: string
 }

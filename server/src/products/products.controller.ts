@@ -1,13 +1,11 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
-import { RolesGuards } from 'src/auth/roles.guard';
 import { Roles } from 'src/auth/roles-auth.decorator';
 import { ProductsService } from './products.service';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { DeleteProductDto } from './dto/delete-product.dto';
 import { SetSaleDto } from './dto/set-sale.dto';
 import { SetParameterValueDto } from './dto/set-parameter-value.dto';
-import { GetProductByIdDto } from './dto/get-product-by-id.dto';
 
 @Controller('products')
 export class ProductsController {

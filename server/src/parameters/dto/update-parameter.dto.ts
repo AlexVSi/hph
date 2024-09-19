@@ -7,4 +7,6 @@ export class UpdateParameterDto {
     @ValidateNested()
     @Type(() => MultilingualField)
     readonly parameter: MultilingualField;
+
+    readonly valueType: string;
 }

@@ -1,9 +1,9 @@
 import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
 import { Parameter } from "src/parameters/parameters.model";
 import { Product } from "src/products/products.model";
+import { CategoriesTranslate } from "./categories-translate.model";
 
 interface CategoryCreationAttrs {
-    category: object
     sale?: number
 }
 
@@ -11,9 +11,6 @@ interface CategoryCreationAttrs {
 export class Category extends Model<Category, CategoryCreationAttrs> {
     @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4, unique: true, primaryKey: true })
     id: string;
-
-    @Column({ type: DataType.JSON, allowNull: false, unique: true })
-    category: object;
 
     @Column({ type: DataType.FLOAT, allowNull: true, defaultValue: 0 })
     sale?: number;
@@ -23,4 +20,7 @@ export class Category extends Model<Category, CategoryCreationAttrs> {
 
     @HasMany(() => Parameter, 'categoryId')
     parameters: Parameter[];
+
+    @HasMany(() => CategoriesTranslate)
+    categoriesTranslate: CategoriesTranslate[];
 }
